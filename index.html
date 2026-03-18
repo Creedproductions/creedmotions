@@ -1,280 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quotation – Creed Productions</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background: #0d0d1a;
-    color: #1a1a2e;
-    min-height: 100vh;
-    padding: 30px 16px;
-  }
-
-  .page {
-    max-width: 880px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow:
-      0 2px 0 #7c3aed,
-      0 20px 60px rgba(124,58,237,0.25),
-      0 60px 120px rgba(0,0,0,0.5);
-    transform: perspective(1200px) rotateX(1deg);
-    transform-origin: top center;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%);
-    padding: 44px 52px 36px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: -40px; left: 30%;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, rgba(167,139,250,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-  .header-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
-  .brand-name {
-    font-size: 30px; font-weight: 800; letter-spacing: 3px; color: #fff;
-    text-shadow: 0 2px 12px rgba(124,58,237,0.6), 0 0 40px rgba(167,139,250,0.3);
-  }
-  .brand-tag { font-size: 11px; letter-spacing: 3px; color: #a78bfa; text-transform: uppercase; margin-top: 4px; }
-  .doc-label { text-align: right; }
-  .doc-label h2 { font-size: 22px; font-weight: 700; color: #a78bfa; letter-spacing: 2px; }
-  .doc-label p { font-size: 12px; color: #c4b5fd; margin-top: 3px; }
-  .doc-label .valid { color: #fff; font-weight: 600; margin-top: 6px; }
-  .header-divider { border: none; border-top: 1px solid rgba(167,139,250,0.25); margin: 24px 0 18px; position: relative; z-index: 1; }
-  .header-meta { display: flex; gap: 32px; font-size: 12.5px; color: #c4b5fd; position: relative; z-index: 1; flex-wrap: wrap; }
-  .header-meta span { color: #fff; font-weight: 600; }
-
-  /* ── BODY ── */
-  .body { padding: 44px 52px; }
-
-  .intro {
-    font-size: 13.5px; color: #4b5563; line-height: 1.85;
-    margin-bottom: 40px;
-    border-left: 3px solid #7c3aed;
-    padding-left: 16px;
-  }
-
-  .section-title {
-    font-size: 10.5px; letter-spacing: 2.5px; color: #7c3aed;
-    text-transform: uppercase; font-weight: 700; margin-bottom: 16px;
-  }
-
-  /* ── MODE CARDS ── */
-  .modes { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
-
-  .mode {
-    border-radius: 12px;
-    padding: 20px 24px;
-    border: 1.5px solid #e5e7eb;
-    background: #fff;
-    transform: perspective(600px) rotateX(0deg);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    cursor: default;
-  }
-  .mode:hover {
-    transform: perspective(600px) rotateX(-2deg) translateY(-4px);
-    box-shadow: 0 12px 32px rgba(124,58,237,0.15), 0 4px 0 #7c3aed;
-    border-color: #7c3aed;
-  }
-  .mode-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .mode-name { font-size: 14px; font-weight: 700; color: #1a1a2e; }
-  .mode-tag {
-    font-size: 11px; font-weight: 600; color: #7c3aed;
-    background: #f5f3ff; padding: 3px 12px; border-radius: 20px;
-    white-space: nowrap;
-  }
-  .mode-desc { font-size: 13px; color: #4b5563; line-height: 1.7; }
-
-  /* ── PACKAGES ── */
-  .packages { display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; }
-
-  .pkg {
-    border: 1.5px solid #e5e7eb;
-    border-radius: 12px;
-    overflow: visible;
-    background: #fff;
-    transform: perspective(800px) rotateX(0deg);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-  .pkg:hover {
-    transform: perspective(800px) rotateX(-1.5deg) translateY(-5px) scale(1.005);
-    box-shadow: 0 16px 40px rgba(124,58,237,0.15), 0 4px 0 #7c3aed;
-    border-color: #7c3aed;
-  }
-  .pkg.highlight { border-color: #7c3aed; box-shadow: 0 4px 20px rgba(124,58,237,0.12), 0 3px 0 #7c3aed; }
-
-  .pkg-header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 22px; background: #fafafa;
-    border-radius: 12px 12px 0 0;
-  }
-  .pkg.highlight .pkg-header { background: linear-gradient(90deg, #f5f3ff, #ede9fe); }
-  .pkg-left { display: flex; flex-direction: column; gap: 4px; }
-  .pkg-name { font-size: 14px; font-weight: 700; color: #1a1a2e; }
-  .pkg-price { font-size: 17px; font-weight: 800; color: #7c3aed; white-space: nowrap; }
-
-  /* coded badges */
-  .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-  .badge {
-    font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px;
-    letter-spacing: 0.5px;
-  }
-  .badge-a { background: #dcfce7; color: #166534; }
-  .badge-b { background: #fef9c3; color: #854d0e; }
-  .badge-c { background: #ede9fe; color: #5b21b6; }
-
-  .pkg-body { padding: 18px 22px; }
-  .pkg-desc { font-size: 13px; color: #6b7280; margin-bottom: 14px; }
-
-  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 18px; }
-  .feature {
-    font-size: 12.5px; color: #374151;
-    display: flex; align-items: flex-start; gap: 8px; line-height: 1.45;
-  }
-  .feature::before { content: '–'; color: #7c3aed; font-weight: 700; flex-shrink: 0; }
-
-  .pkg-footer {
-    font-size: 12px; color: #9ca3af;
-    margin-top: 14px; padding-top: 12px;
-    border-top: 1px solid #f3f4f6;
-    display: flex; gap: 24px; flex-wrap: wrap;
-  }
-  .pkg-footer span { color: #374151; font-weight: 600; }
-
-  /* modes legend inside package */
-  .mode-legend {
-    margin-top: 12px; padding: 10px 14px;
-    background: #f9fafb; border-radius: 8px;
-    font-size: 12px; color: #4b5563; line-height: 1.7;
-  }
-  .mode-legend strong { color: #1a1a2e; }
-
-  /* ── ADD-ONS ── */
-  .addons-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 13px; }
-  .addons-table th {
-    background: #f5f3ff; color: #7c3aed; text-align: left;
-    padding: 10px 14px; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
-  }
-  .addons-table td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
-  .addons-table tr:last-child td { border-bottom: none; }
-  .addons-table td:last-child { text-align: right; font-weight: 600; color: #1a1a2e; white-space: nowrap; }
-
-  /* ── PAYMENT ── */
-  .payment { display: flex; gap: 14px; margin-bottom: 40px; }
-  .pay-step {
-    flex: 1; background: #f9fafb; border-radius: 10px;
-    padding: 16px; text-align: center; border: 1.5px solid #e5e7eb;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .pay-step:hover {
-    transform: translateY(-4px) perspective(400px) rotateX(-3deg);
-    box-shadow: 0 10px 24px rgba(124,58,237,0.15);
-  }
-  .pay-step .pct { font-size: 24px; font-weight: 800; color: #7c3aed; }
-  .pay-step p { font-size: 12px; color: #6b7280; margin-top: 5px; line-height: 1.5; }
-
-  /* ── TERMS ── */
-  .notes {
-    background: #f8f7ff; border-radius: 10px;
-    padding: 18px 22px; margin-bottom: 40px;
-    font-size: 13px; color: #374151;
-  }
-  .notes ul { padding-left: 18px; }
-  .notes ul li { margin-bottom: 6px; line-height: 1.7; }
-
-  /* ── FOOTER ── */
-  .footer {
-    border-top: 1px solid #f3f4f6;
-    padding: 26px 52px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: linear-gradient(90deg, #fafafa, #f5f3ff);
-  }
-  .footer-contact p { font-size: 12px; color: #6b7280; line-height: 1.9; }
-  .footer-contact strong { color: #1a1a2e; }
-  .staff-block { text-align: center; }
-  .staff-avatar {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: linear-gradient(135deg, #7c3aed, #302b63);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; font-weight: 800; color: #fff;
-    margin: 0 auto 6px;
-    box-shadow: 0 4px 14px rgba(124,58,237,0.4);
-  }
-  .staff-name { font-size: 13px; font-weight: 700; color: #1a1a2e; }
-  .staff-role { font-size: 11px; color: #7c3aed; letter-spacing: 1px; text-transform: uppercase; }
-  .footer-sig { text-align: right; }
-  .footer-sig p { font-size: 12px; color: #9ca3af; }
-  .footer-sig .sig-line { font-size: 20px; font-family: Georgia, serif; color: #7c3aed; margin-top: 6px; font-style: italic; }
-
-  .validity {
-    text-align: center; font-size: 12px; color: #9ca3af;
-    padding: 14px 52px 26px;
-  }
-
-  @media print {
-    body { background: #fff; padding: 0; }
-    .page { box-shadow: none; margin: 0; border-radius: 0; transform: none; }
-    .mode:hover, .pkg:hover, .pay-step:hover { transform: none; box-shadow: none; }
-  }
-</style>
-</head>
-<body>
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-top">
-      <div>
-        <div class="brand-name">CREED PRODUCTIONS</div>
-        <div class="brand-tag">Digital · Mobile · Web</div>
-      </div>
-      <div class="doc-label">
-        <h2>QUOTATION</h2>
-        <p>Ref: CP-WEB-2026-031</p>
-        <p>Date: 4 July 2025</p>
-        <p class="valid">Valid Until: 4 June 2026</p>
-      </div>
-    </div>
-    <hr class="header-divider">
-    <div class="header-meta">
-      Prepared by: <span>Mike — Creed Productions</span>
-      &nbsp;|&nbsp;
-      Currency: <span>Ugandan Shillings (UGX)</span>
-      &nbsp;|&nbsp;
-      Valid Until: <span>4 June 2026</span>
-    </div>
-  </div>
-
-  <!-- BODY -->
-  <div class="body">
-
-    <div class="intro">
+ss="intro">
       Creed Productions builds websites tailored to what each client actually needs. Every package below is fully hand-coded — no page builders, no templates. Three build modes are available depending on how involved you want to be in running your site after launch.
     </div>
 
@@ -484,3 +208,226 @@
           <td>.com or .co.ug (1 year)</td>
           <td>50,000 – 80,000</td>
           
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creed Productions – Digital · Mobile · Web</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg,#0f0c29 0%,#302b63 55%,#24243e 100%);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content:''; position:absolute; top:-100px; right:-100px; width:500px; height:500px;
+  background:radial-gradient(circle,rgba(124,58,237,0.3) 0%,transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.hero::after {
+  content:''; position:absolute; bottom:-80px; left:-80px; width:400px; height:400px;
+  background:radial-gradient(circle,rgba(167,139,250,0.15) 0%,transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.hero-badge {
+  display:inline-block; background:rgba(124,58,237,0.2); border:1px solid rgba(124,58,237,0.5);
+  color:#a78bfa; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  padding:6px 18px; border-radius:30px; margin-bottom:28px; position:relative; z-index:1;
+}
+.hero h1 {
+  font-size:clamp(36px,6vw,72px); font-weight:800; color:#fff; line-height:1.1;
+  letter-spacing:-1px; position:relative; z-index:1; margin-bottom:22px;
+}
+.hero h1 span { color:#a78bfa; }
+.hero p { font-size:clamp(14px,2vw,18px); color:#c4b5fd; max-width:560px; line-height:1.8; position:relative; z-index:1; margin-bottom:40px; }
+.hero-btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative; z-index:1; }
+.btn-hero-primary {
+  background:linear-gradient(135deg,#7c3aed,#5b21b6); color:#fff;
+  padding:14px 32px; border-radius:8px; font-weight:700; font-size:14px;
+  text-decoration:none; letter-spacing:0.5px; box-shadow:0 4px 20px rgba(124,58,237,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-hero-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(124,58,237,0.5); }
+.btn-hero-outline {
+  background:transparent; color:#a78bfa; padding:14px 32px; border-radius:8px;
+  font-weight:700; font-size:14px; text-decoration:none; letter-spacing:0.5px;
+  border:1.5px solid rgba(167,139,250,0.5); transition:background 0.2s,border-color 0.2s;
+}
+.btn-hero-outline:hover { background:rgba(124,58,237,0.1); border-color:#a78bfa; }
+.hero-scroll {
+  position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  font-size:11px; letter-spacing:2px; color:#6d5aad; text-transform:uppercase;
+  z-index:1; display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.hero-scroll span { width:1px; height:40px; background:linear-gradient(to bottom,#7c3aed,transparent); display:block; }
+
+/* ── STATS ── */
+.stats { background:#fff; padding:48px 24px; display:flex; justify-content:center; flex-wrap:wrap; }
+.stat { flex:1; min-width:150px; text-align:center; padding:20px 24px; border-right:1px solid #f3f4f6; }
+.stat:last-child { border-right:none; }
+.stat-num { font-size:36px; font-weight:800; color:#7c3aed; }
+.stat-label { font-size:11px; color:#6b7280; margin-top:4px; letter-spacing:1px; text-transform:uppercase; }
+
+/* ── SERVICE CARDS ── */
+.services-grid {
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;
+}
+.svc-card {
+  background:#fff; border-radius:14px; padding:32px 28px;
+  border:1.5px solid #e5e7eb; transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.svc-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(124,58,237,0.14),0 3px 0 #7c3aed; border-color:#7c3aed; }
+.svc-icon { width:52px; height:52px; border-radius:12px; background:linear-gradient(135deg,#7c3aed,#5b21b6); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:18px; box-shadow:0 4px 14px rgba(124,58,237,0.3); }
+.svc-card h3 { font-size:16px; font-weight:700; color:#1a1a2e; margin-bottom:10px; }
+.svc-card p { font-size:13px; color:#6b7280; line-height:1.75; }
+.svc-link { display:inline-block; margin-top:14px; font-size:12.5px; font-weight:700; color:#7c3aed; text-decoration:none; }
+.svc-link:hover { text-decoration:underline; }
+
+/* ── WHY ── */
+.why { background:linear-gradient(135deg,#0f0c29 0%,#302b63 55%,#24243e 100%); padding:80px 24px; }
+.why .section-title { color:#fff; }
+.why .section-sub { color:#c4b5fd; }
+.why-grid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.why-item {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(167,139,250,0.2);
+  border-radius:12px; padding:24px 20px; text-align:center;
+  transition:background 0.3s,border-color 0.3s;
+}
+.why-item:hover { background:rgba(124,58,237,0.12); border-color:rgba(167,139,250,0.5); }
+.why-icon { font-size:28px; margin-bottom:12px; }
+.why-item h4 { font-size:14px; font-weight:700; color:#fff; margin-bottom:8px; }
+.why-item p { font-size:12.5px; color:#c4b5fd; line-height:1.7; }
+
+/* ── PROCESS ── */
+.process { background:#f8f7ff; padding:80px 24px; }
+.process-steps { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:0; }
+.step { text-align:center; padding:28px 16px; position:relative; }
+.step:not(:last-child)::after { content:'→'; position:absolute; right:-8px; top:42px; font-size:20px; color:#d8b4fe; }
+.step-num { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#7c3aed,#5b21b6); color:#fff; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; box-shadow:0 4px 14px rgba(124,58,237,0.3); }
+.step h4 { font-size:13.5px; font-weight:700; color:#1a1a2e; margin-bottom:6px; }
+.step p { font-size:12px; color:#6b7280; line-height:1.6; }
+
+/* ── CTA ── */
+.cta-banner { background:linear-gradient(135deg,#7c3aed,#5b21b6); padding:70px 24px; text-align:center; }
+.cta-banner h2 { font-size:clamp(24px,4vw,38px); font-weight:800; color:#fff; margin-bottom:14px; }
+.cta-banner p { font-size:15px; color:#ddd6fe; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.7; }
+.btn-white { display:inline-block; background:#fff; color:#7c3aed; padding:14px 36px; border-radius:8px; font-weight:800; font-size:14px; text-decoration:none; box-shadow:0 4px 20px rgba(0,0,0,0.2); transition:transform 0.2s,box-shadow 0.2s; }
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,0.3); }
+
+@media (max-width:600px) {
+  .step:not(:last-child)::after { display:none; }
+  .process-steps { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CREED <span>PRODUCTIONS</span></a>
+    <button class="nav-toggle" id="navToggle">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quotation.html" class="nav-cta">Get Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Uganda's Boutique Dev Studio</div>
+  <h1>We Build <span>Digital Products</span><br>That Actually Work</h1>
+  <p>Websites, mobile apps, and web applications — hand-coded, performance-first, and built to grow your business.</p>
+  <div class="hero-btns">
+    <a href="services.html" class="btn-hero-primary">Explore Services</a>
+    <a href="portfolio.html" class="btn-hero-outline">View Our Work</a>
+  </div>
+  <div class="hero-scroll">Scroll<span></span></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat anim"><div class="stat-num">40+</div><div class="stat-label">Projects Delivered</div></div>
+  <div class="stat anim"><div class="stat-num">3</div><div class="stat-label">Years Active</div></div>
+  <div class="stat anim"><div class="stat-num">5</div><div class="stat-label">Apps Published</div></div>
+  <div class="stat anim"><div class="stat-num">100%</div><div class="stat-label">Hand-Coded</div></div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" style="background:#fff;">
+  <div class="section-center">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Full-Stack Digital Services</h2>
+    <p class="section-sub">From a single landing page to a full mobile app — designed and built entirely in-house.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card anim"><div class="svc-icon">🌐</div><h3>Website Development</h3><p>Fully hand-coded websites — landing pages, business sites, corporate portals. No page builders. No templates.</p><a href="services.html#web" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">📱</div><h3>Mobile App Development</h3><p>Cross-platform Flutter apps for Android and iOS. We have 5 apps published on Google Play — including Unisaver, Status Downloader, and Guess Word.</p><a href="services.html#mobile" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">⚙️</div><h3>Web Applications</h3><p>Full-stack web apps with databases, authentication, dashboards, and REST APIs. Built for real workloads.</p><a href="services.html#webapp" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">🎨</div><h3>UI/UX Design</h3><p>Clean, modern interface design that converts. Every screen designed before a single line of code is written.</p><a href="services.html#design" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">🔧</div><h3>Maintenance &amp; Support</h3><p>Monthly retainer plans to keep your site fast, secure, and up to date. We handle everything post-launch.</p><a href="services.html#support" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">📊</div><h3>SEO &amp; Analytics</h3><p>Technical SEO, Google Analytics, Core Web Vitals tuning, and sitemap submission included on all projects.</p><a href="services.html#seo" class="svc-link">Learn more →</a></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="section-center">
+    <div class="section-tag" style="color:#a78bfa;">Why Creed Productions</div>
+    <h2 class="section-title">Built Different</h2>
+    <p class="section-sub" style="color:#c4b5fd;">Small studio — senior-level attention on every project, every time.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item anim"><div class="why-icon">✍️</div><h4>100% Hand-Coded</h4><p>No WordPress, no Wix, no builders. Every project is written from scratch for full control and performance.</p></div>
+    <div class="why-item anim"><div class="why-icon">🇺🇬</div><h4>Uganda-Based</h4><p>Local rates. Local understanding. International quality. We know the Ugandan market and build for it.</p></div>
+    <div class="why-item anim"><div class="why-icon">⚡</div><h4>Fast Delivery</h4><p>Most websites delivered in 2–7 working days. No bloated timelines or unnecessary back-and-forth.</p></div>
+    <div class="why-item anim"><div class="why-icon">🔓</div><h4>Full Ownership</h4><p>You own everything — code, domain, hosting. No vendor lock-in. Walk away with your full project files.</p></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-center">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">From Brief to Live in Days</h2>
+    <p class="section-sub">A simple, transparent process with no surprises.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step anim"><div class="step-num">1</div><h4>Brief</h4><p>You tell us what you need. We ask the right questions.</p></div>
+    <div class="step anim"><div class="step-num">2</div><h4>Quote</h4><p>A clear fixed-price quotation. No hidden fees.</p></div>
+    <div class="step anim"><div class="step-num">3</div><h4>Design</h4><p>Mockups reviewed and approved before build starts.</p></div>
+    <div class="step anim"><div class="step-num">4</div><h4>Build</h4><p>Coded, tested, and reviewed with you at every step.</p></div>
+    <div class="step anim"><div class="step-num">5</div><h4>Launch</h4><p>Deployed live. You get all files and credentials.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>Ready to Build Something?</h2>
+  <p>Get a fixed-price quotation within 24 hours. No obligation. No hidden fees.</p>
+  <a href="quotation.html" class="btn-white">View Pricing</a>
+</section>
+
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="f-logo">CREED <span>PRODUCTIONS</span></div><p>Digital · Mobile · Web<br>Kampala, Uganda</p></div>
+    <div class="footer-links"><h4>Pages</h4><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html">Contact</a><a href="quotation.html">Get Quote</a></div>
+    <div class="footer-links"><h4>Services</h4><a href="services.html#web">Website Dev</a><a href="services.html#mobile">Mobile Apps</a><a href="services.html#webapp">Web Apps</a><a href="services.html#design">UI/UX Design</a></div>
+    <div class="footer-contact-block"><h4>Contact</h4><p>creedproductions.ug@gmail.com</p><p>Kampala, Uganda</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Creed Productions. All rights reserved.</p></div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
