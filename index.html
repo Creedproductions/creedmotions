@@ -1,70 +1,226 @@
-ss="intro">
-      Creed Productions builds websites tailored to what each client actually needs. Every package below is fully hand-coded — no page builders, no templates. Three build modes are available depending on how involved you want to be in running your site after launch.
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creed Productions – Digital · Mobile · Web</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg,#0f0c29 0%,#302b63 55%,#24243e 100%);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content:''; position:absolute; top:-100px; right:-100px; width:500px; height:500px;
+  background:radial-gradient(circle,rgba(124,58,237,0.3) 0%,transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.hero::after {
+  content:''; position:absolute; bottom:-80px; left:-80px; width:400px; height:400px;
+  background:radial-gradient(circle,rgba(167,139,250,0.15) 0%,transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.hero-badge {
+  display:inline-block; background:rgba(124,58,237,0.2); border:1px solid rgba(124,58,237,0.5);
+  color:#a78bfa; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  padding:6px 18px; border-radius:30px; margin-bottom:28px; position:relative; z-index:1;
+}
+.hero h1 {
+  font-size:clamp(36px,6vw,72px); font-weight:800; color:#fff; line-height:1.1;
+  letter-spacing:-1px; position:relative; z-index:1; margin-bottom:22px;
+}
+.hero h1 span { color:#a78bfa; }
+.hero p { font-size:clamp(14px,2vw,18px); color:#c4b5fd; max-width:560px; line-height:1.8; position:relative; z-index:1; margin-bottom:40px; }
+.hero-btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative; z-index:1; }
+.btn-hero-primary {
+  background:linear-gradient(135deg,#7c3aed,#5b21b6); color:#fff;
+  padding:14px 32px; border-radius:8px; font-weight:700; font-size:14px;
+  text-decoration:none; letter-spacing:0.5px; box-shadow:0 4px 20px rgba(124,58,237,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-hero-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(124,58,237,0.5); }
+.btn-hero-outline {
+  background:transparent; color:#a78bfa; padding:14px 32px; border-radius:8px;
+  font-weight:700; font-size:14px; text-decoration:none; letter-spacing:0.5px;
+  border:1.5px solid rgba(167,139,250,0.5); transition:background 0.2s,border-color 0.2s;
+}
+.btn-hero-outline:hover { background:rgba(124,58,237,0.1); border-color:#a78bfa; }
+.hero-scroll {
+  position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  font-size:11px; letter-spacing:2px; color:#6d5aad; text-transform:uppercase;
+  z-index:1; display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.hero-scroll span { width:1px; height:40px; background:linear-gradient(to bottom,#7c3aed,transparent); display:block; }
 
-    <!-- BUILD MODES -->
-    <div class="section-title">Build Modes</div>
-    <div class="modes">
+/* ── STATS ── */
+.stats { background:#fff; padding:48px 24px; display:flex; justify-content:center; flex-wrap:wrap; }
+.stat { flex:1; min-width:150px; text-align:center; padding:20px 24px; border-right:1px solid #f3f4f6; }
+.stat:last-child { border-right:none; }
+.stat-num { font-size:36px; font-weight:800; color:#7c3aed; }
+.stat-label { font-size:11px; color:#6b7280; margin-top:4px; letter-spacing:1px; text-transform:uppercase; }
 
-      <div class="mode">
-        <div class="mode-header">
-          <div class="mode-name">Mode A — Client-Editable Website</div>
-          <div class="mode-tag">Self-Managed</div>
-        </div>
-        <div class="mode-desc">
-          Built with clean, readable code structured so the client can make text and image changes without developer assistance. No monthly fees after handover. Suited for individuals and small businesses who want full ownership of their site.
-        </div>
-      </div>
+/* ── SERVICE CARDS ── */
+.services-grid {
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;
+}
+.svc-card {
+  background:#fff; border-radius:14px; padding:32px 28px;
+  border:1.5px solid #e5e7eb; transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.svc-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(124,58,237,0.14),0 3px 0 #7c3aed; border-color:#7c3aed; }
+.svc-icon { width:52px; height:52px; border-radius:12px; background:linear-gradient(135deg,#7c3aed,#5b21b6); display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:18px; box-shadow:0 4px 14px rgba(124,58,237,0.3); }
+.svc-card h3 { font-size:16px; font-weight:700; color:#1a1a2e; margin-bottom:10px; }
+.svc-card p { font-size:13px; color:#6b7280; line-height:1.75; }
+.svc-link { display:inline-block; margin-top:14px; font-size:12.5px; font-weight:700; color:#7c3aed; text-decoration:none; }
+.svc-link:hover { text-decoration:underline; }
 
-      <div class="mode">
-        <div class="mode-header">
-          <div class="mode-name">Mode B — Client-Editable with Full Training</div>
-          <div class="mode-tag">Guided Handover</div>
-        </div>
-        <div class="mode-desc">
-          Same as Mode A, with an added structured session where every relevant part of the code is walked through line by line. You leave knowing exactly what does what and how to manage it yourself. Carries an additional training fee.
-        </div>
-      </div>
+/* ── WHY ── */
+.why { background:linear-gradient(135deg,#0f0c29 0%,#302b63 55%,#24243e 100%); padding:80px 24px; }
+.why .section-title { color:#fff; }
+.why .section-sub { color:#c4b5fd; }
+.why-grid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.why-item {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(167,139,250,0.2);
+  border-radius:12px; padding:24px 20px; text-align:center;
+  transition:background 0.3s,border-color 0.3s;
+}
+.why-item:hover { background:rgba(124,58,237,0.12); border-color:rgba(167,139,250,0.5); }
+.why-icon { font-size:28px; margin-bottom:12px; }
+.why-item h4 { font-size:14px; font-weight:700; color:#fff; margin-bottom:8px; }
+.why-item p { font-size:12.5px; color:#c4b5fd; line-height:1.7; }
 
-      <div class="mode">
-        <div class="mode-header">
-          <div class="mode-name">Mode C — Developer-Managed Website</div>
-          <div class="mode-tag">Monthly Retainer</div>
-        </div>
-        <div class="mode-desc">
-          A server-based dynamic website maintained entirely by the developer on a monthly retainer. Content updates, feature additions, hosting, and backend work are all handled by Creed Productions. Suited for businesses that expect regular changes or need ongoing development.
-        </div>
-      </div>
+/* ── PROCESS ── */
+.process { background:#f8f7ff; padding:80px 24px; }
+.process-steps { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:0; }
+.step { text-align:center; padding:28px 16px; position:relative; }
+.step:not(:last-child)::after { content:'→'; position:absolute; right:-8px; top:42px; font-size:20px; color:#d8b4fe; }
+.step-num { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#7c3aed,#5b21b6); color:#fff; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; box-shadow:0 4px 14px rgba(124,58,237,0.3); }
+.step h4 { font-size:13.5px; font-weight:700; color:#1a1a2e; margin-bottom:6px; }
+.step p { font-size:12px; color:#6b7280; line-height:1.6; }
 
-    </div>
+/* ── CTA ── */
+.cta-banner { background:linear-gradient(135deg,#7c3aed,#5b21b6); padding:70px 24px; text-align:center; }
+.cta-banner h2 { font-size:clamp(24px,4vw,38px); font-weight:800; color:#fff; margin-bottom:14px; }
+.cta-banner p { font-size:15px; color:#ddd6fe; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.7; }
+.btn-white { display:inline-block; background:#fff; color:#7c3aed; padding:14px 36px; border-radius:8px; font-weight:800; font-size:14px; text-decoration:none; box-shadow:0 4px 20px rgba(0,0,0,0.2); transition:transform 0.2s,box-shadow 0.2s; }
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,0.3); }
 
-    <!-- PACKAGES -->
-    <div class="section-title">Website Packages — All Hand-Coded</div>
-    <div class="packages">
+@media (max-width:600px) {
+  .step:not(:last-child)::after { display:none; }
+  .process-steps { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
 
-      <!-- P1 -->
-      <div class="pkg">
-        <div class="pkg-header">
-          <div class="pkg-left">
-            <div class="pkg-name">Package 1 — Dynamic Landing Page</div>
-            <div class="badges">
-              <span class="badge badge-a">Mode A</span>
-              <span class="badge badge-b">Mode B</span>
-              <span class="badge badge-c">Mode C</span>
-            </div>
-          </div>
-          <div class="pkg-price">UGX 350,000</div>
-        </div>
-        <div class="pkg-body">
-          <div class="pkg-desc">A single high-converting page covering everything a visitor needs to know. Ideal for product launches, personal brands, or service promotion. Fully coded — no builders used.</div>
-          <div class="features">
-            <div class="feature">Responsive layout (mobile + desktop)</div>
-            <div class="feature">Animated hero section</div>
-            <div class="feature">Services or features section</div>
-            <div class="feature">Contact and enquiry form</div>
-            <div class="feature">Social media links</div>
-            <div class="feature">Basic SEO setup</div>
-            <div class="feature">Google Maps embed</div>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CREED <span>PRODUCTIONS</span></a>
+    <button class="nav-toggle" id="navToggle">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quotation.html" class="nav-cta">Get Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Uganda's Boutique Dev Studio</div>
+  <h1>We Build <span>Digital Products</span><br>That Actually Work</h1>
+  <p>Websites, mobile apps, and web applications — hand-coded, performance-first, and built to grow your business.</p>
+  <div class="hero-btns">
+    <a href="services.html" class="btn-hero-primary">Explore Services</a>
+    <a href="portfolio.html" class="btn-hero-outline">View Our Work</a>
+  </div>
+  <div class="hero-scroll">Scroll<span></span></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat anim"><div class="stat-num">40+</div><div class="stat-label">Projects Delivered</div></div>
+  <div class="stat anim"><div class="stat-num">3</div><div class="stat-label">Years Active</div></div>
+  <div class="stat anim"><div class="stat-num">5</div><div class="stat-label">Apps Published</div></div>
+  <div class="stat anim"><div class="stat-num">100%</div><div class="stat-label">Hand-Coded</div></div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" style="background:#fff;">
+  <div class="section-center">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Full-Stack Digital Services</h2>
+    <p class="section-sub">From a single landing page to a full mobile app — designed and built entirely in-house.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card anim"><div class="svc-icon">🌐</div><h3>Website Development</h3><p>Fully hand-coded websites — landing pages, business sites, corporate portals. No page builders. No templates.</p><a href="services.html#web" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">📱</div><h3>Mobile App Development</h3><p>Cross-platform Flutter apps for Android and iOS. We have 5 apps published on Google Play — including Unisaver, Status Downloader, and Guess Word.</p><a href="services.html#mobile" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">⚙️</div><h3>Web Applications</h3><p>Full-stack web apps with databases, authentication, dashboards, and REST APIs. Built for real workloads.</p><a href="services.html#webapp" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">🎨</div><h3>UI/UX Design</h3><p>Clean, modern interface design that converts. Every screen designed before a single line of code is written.</p><a href="services.html#design" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">🔧</div><h3>Maintenance &amp; Support</h3><p>Monthly retainer plans to keep your site fast, secure, and up to date. We handle everything post-launch.</p><a href="services.html#support" class="svc-link">Learn more →</a></div>
+    <div class="svc-card anim"><div class="svc-icon">📊</div><h3>SEO &amp; Analytics</h3><p>Technical SEO, Google Analytics, Core Web Vitals tuning, and sitemap submission included on all projects.</p><a href="services.html#seo" class="svc-link">Learn more →</a></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="section-center">
+    <div class="section-tag" style="color:#a78bfa;">Why Creed Productions</div>
+    <h2 class="section-title">Built Different</h2>
+    <p class="section-sub" style="color:#c4b5fd;">Small studio — senior-level attention on every project, every time.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item anim"><div class="why-icon">✍️</div><h4>100% Hand-Coded</h4><p>No WordPress, no Wix, no builders. Every project is written from scratch for full control and performance.</p></div>
+    <div class="why-item anim"><div class="why-icon">🇺🇬</div><h4>Uganda-Based</h4><p>Local rates. Local understanding. International quality. We know the Ugandan market and build for it.</p></div>
+    <div class="why-item anim"><div class="why-icon">⚡</div><h4>Fast Delivery</h4><p>Most websites delivered in 2–7 working days. No bloated timelines or unnecessary back-and-forth.</p></div>
+    <div class="why-item anim"><div class="why-icon">🔓</div><h4>Full Ownership</h4><p>You own everything — code, domain, hosting. No vendor lock-in. Walk away with your full project files.</p></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-center">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">From Brief to Live in Days</h2>
+    <p class="section-sub">A simple, transparent process with no surprises.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step anim"><div class="step-num">1</div><h4>Brief</h4><p>You tell us what you need. We ask the right questions.</p></div>
+    <div class="step anim"><div class="step-num">2</div><h4>Quote</h4><p>A clear fixed-price quotation. No hidden fees.</p></div>
+    <div class="step anim"><div class="step-num">3</div><h4>Design</h4><p>Mockups reviewed and approved before build starts.</p></div>
+    <div class="step anim"><div class="step-num">4</div><h4>Build</h4><p>Coded, tested, and reviewed with you at every step.</p></div>
+    <div class="step anim"><div class="step-num">5</div><h4>Launch</h4><p>Deployed live. You get all files and credentials.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <h2>Ready to Build Something?</h2>
+  <p>Get a fixed-price quotation within 24 hours. No obligation. No hidden fees.</p>
+  <a href="quotation.html" class="btn-white">View Pricing</a>
+</section>
+
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="f-logo">CREED <span>PRODUCTIONS</span></div><p>Digital · Mobile · Web<br>Kampala, Uganda</p></div>
+    <div class="footer-links"><h4>Pages</h4><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html">Contact</a><a href="quotation.html">Get Quote</a></div>
+    <div class="footer-links"><h4>Services</h4><a href="services.html#web">Website Dev</a><a href="services.html#mobile">Mobile Apps</a><a href="services.html#webapp">Web Apps</a><a href="services.html#design">UI/UX Design</a></div>
+    <div class="footer-contact-block"><h4>Contact</h4><p>creedproductions.ug@gmail.com</p><p>Kampala, Uganda</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Creed Productions. All rights reserved.</p></div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+                                                                                                </html>            <div class="feature">Google Maps embed</div>
             <div class="feature">WhatsApp contact button</div>
           </div>
           <div class="mode-legend">
