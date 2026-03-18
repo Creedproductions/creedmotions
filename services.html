@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services – Creed Productions</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.svc-section { padding:80px 24px; }
+.svc-section:nth-child(even) { background:#f8f7ff; }
+.svc-block { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.svc-block.flip { direction:rtl; }
+.svc-block.flip > * { direction:ltr; }
+.svc-text .tag { font-size:11px; letter-spacing:3px; color:#7c3aed; text-transform:uppercase; font-weight:700; margin-bottom:14px; }
+.svc-text h2 { font-size:clamp(22px,3.5vw,34px); font-weight:800; color:#1a1a2e; margin-bottom:16px; line-height:1.2; }
+.svc-text p { font-size:14px; color:#4b5563; line-height:1.85; margin-bottom:20px; }
+.feat-list { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+.feat-list li { font-size:13px; color:#374151; display:flex; align-items:flex-start; gap:10px; line-height:1.5; }
+.feat-list li::before { content:'✓'; color:#7c3aed; font-weight:800; flex-shrink:0; margin-top:1px; }
+.svc-visual {
+  background:linear-gradient(135deg,#0f0c29,#302b63); border-radius:16px;
+  padding:40px 32px; text-align:center;
+  box-shadow:0 20px 60px rgba(124,58,237,0.2); position:relative; overflow:hidden;
+}
+.svc-visual::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; background:radial-gradient(circle,rgba(124,58,237,0.3) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
+.svc-big-icon { font-size:64px; display:block; margin-bottom:16px; position:relative; z-index:1; }
+.svc-visual h3 { font-size:18px; font-weight:800; color:#fff; margin-bottom:8px; position:relative; z-index:1; }
+.svc-visual p { font-size:13px; color:#c4b5fd; line-height:1.7; position:relative; z-index:1; }
+.price-from { font-size:13px; color:#a78bfa; margin-top:16px; font-weight:600; position:relative; z-index:1; }
+.price-from strong { font-size:22px; color:#fff; }
+.tech-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; justify-content:center; position:relative; z-index:1; }
+.tech-tag { background:rgba(124,58,237,0.25); border:1px solid rgba(167,139,250,0.3); color:#a78bfa; font-size:11px; font-weight:600; padding:4px 12px; border-radius:20px; }
+.addons-wrap { max-width:860px; margin:0 auto; }
+.addons-table { width:100%; border-collapse:collapse; font-size:13px; }
+.addons-table th { background:#f5f3ff; color:#7c3aed; text-align:left; padding:10px 14px; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; }
+.addons-table td { padding:10px 14px; border-bottom:1px solid #f3f4f6; color:#374151; vertical-align:top; }
+.addons-table tr:last-child td { border-bottom:none; }
+.addons-table td:last-child { text-align:right; font-weight:700; color:#1a1a2e; white-space:nowrap; }
+@media (max-width:768px) {
+  .svc-block, .svc-block.flip { grid-template-columns:1fr; direction:ltr; gap:32px; }
+  .svc-visual { padding:28px 20px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CREED <span>PRODUCTIONS</span></a>
+    <button class="nav-toggle" id="navToggle">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quotation.html" class="nav-cta">Get Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">What We Offer</div>
+  <h1>Services That <span>Deliver</span></h1>
+  <p>Every service is executed in-house, from design to deployment. No middlemen. No outsourcing.</p>
+</div>
+
+<section class="svc-section" id="web" style="background:#fff;">
+  <div class="svc-block">
+    <div class="svc-text anim">
+      <div class="tag">Website Development</div>
+      <h2>Websites That Load Fast &amp; Look Exceptional</h2>
+      <p>Every website is hand-coded in clean HTML, CSS, and JavaScript — no WordPress, no page builders. Faster load times, better SEO, and total control over every pixel.</p>
+      <ul class="feat-list">
+        <li>Landing pages, business sites, corporate portals</li>
+        <li>Fully responsive — mobile, tablet, desktop</li>
+        <li>CMS integration for client-managed content</li>
+        <li>Google Analytics, SEO, and sitemap included</li>
+        <li>WhatsApp &amp; social media integration</li>
+        <li>3 build modes: self-managed, trained, or developer-run</li>
+      </ul>
+      <a href="quotation.html" class="btn-primary">See Web Packages</a>
+    </div>
+    <div class="svc-visual anim">
+      <span class="svc-big-icon">🌐</span>
+      <h3>Website Development</h3>
+      <p>From a clean landing page to a full corporate portal — delivered in days, not weeks.</p>
+      <div class="price-from">From <strong>UGX 350,000</strong></div>
+      <div class="tech-tags"><span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag">JavaScript</span><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="svc-section" id="mobile">
+  <div class="svc-block flip">
+    <div class="svc-text anim">
+      <div class="tag">Mobile App Development</div>
+      <h2>Cross-Platform Apps for Android &amp; iOS</h2>
+      <p>We build production-grade mobile applications using Flutter — one codebase, two platforms. Our apps are published on Google Play and the Apple App Store and built to handle real user loads.</p>
+      <ul class="feat-list">
+        <li>Flutter (Dart) — Android &amp; iOS from one codebase</li>
+        <li>Google Play &amp; App Store submission handled</li>
+        <li>Firebase integration (auth, analytics, notifications)</li>
+        <li>In-app purchases and subscription management</li>
+        <li>Custom UI animations and smooth performance</li>
+        <li>Ongoing maintenance and update support</li>
+      </ul>
+      <a href="contact.html" class="btn-primary">Discuss Your App</a>
+    </div>
+    <div class="svc-visual anim">
+      <span class="svc-big-icon">📱</span>
+      <h3>Mobile Applications</h3>
+      <p>Built with Flutter. Published on both major stores. Unisaver and Status Studio are live proof.</p>
+      <div class="price-from">Quoted per scope</div>
+      <div class="tech-tags"><span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span class="tech-tag">Firebase</span><span class="tech-tag">REST API</span><span class="tech-tag">Android</span><span class="tech-tag">iOS</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="svc-section" id="webapp" style="background:#fff;">
+  <div class="svc-block">
+    <div class="svc-text anim">
+      <div class="tag">Web Applications</div>
+      <h2>Full-Stack Applications Built for Scale</h2>
+      <p>When a website isn't enough — when you need user accounts, dashboards, payment processing, or inventory management — we build full web applications with a proper database backend.</p>
+      <ul class="feat-list">
+        <li>User registration, login, and role management</li>
+        <li>Product catalogues and inventory systems</li>
+        <li>Mobile Money and card payment integration</li>
+        <li>REST API design and documentation</li>
+        <li>Admin dashboards with reporting</li>
+        <li>SSL, security hardening, and backups</li>
+      </ul>
+      <a href="quotation.html" class="btn-primary">See E-Commerce Package</a>
+    </div>
+    <div class="svc-visual anim">
+      <span class="svc-big-icon">⚙️</span>
+      <h3>Web Applications</h3>
+      <p>Server-based, database-driven, and built to handle real business operations at any scale.</p>
+      <div class="price-from">From <strong>UGX 2,500,000</strong></div>
+      <div class="tech-tags"><span class="tech-tag">Node.js</span><span class="tech-tag">PHP</span><span class="tech-tag">MySQL</span><span class="tech-tag">REST API</span><span class="tech-tag">Docker</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="svc-section" id="design">
+  <div class="svc-block flip">
+    <div class="svc-text anim">
+      <div class="tag">UI/UX Design</div>
+      <h2>Interfaces That Feel Effortless</h2>
+      <p>Every screen is designed before a line of code is written. We focus on clarity, hierarchy, and visual polish that converts visitors into clients.</p>
+      <ul class="feat-list">
+        <li>Wireframes and interactive mockups</li>
+        <li>Brand-consistent colour and typography systems</li>
+        <li>Mobile-first, responsive design</li>
+        <li>Logo design and brand identity packages</li>
+        <li>App UI kits and component libraries</li>
+        <li>Prototype walkthroughs before build approval</li>
+      </ul>
+      <a href="contact.html" class="btn-primary">Start a Design Project</a>
+    </div>
+    <div class="svc-visual anim">
+      <span class="svc-big-icon">🎨</span>
+      <h3>UI/UX Design</h3>
+      <p>Design that works. Every layout decision is grounded in user behaviour and business goals.</p>
+      <div class="price-from">Logo from <strong>UGX 250,000</strong></div>
+      <div class="tech-tags"><span class="tech-tag">Figma</span><span class="tech-tag">Adobe XD</span><span class="tech-tag">Illustrator</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="svc-section" id="seo" style="background:#fff;">
+  <div class="svc-block">
+    <div class="svc-text anim">
+      <div class="tag">SEO &amp; Analytics</div>
+      <h2>Built to Be Found on Google</h2>
+      <p>Technical SEO is baked into every project from the start — not bolted on at the end. We configure everything needed for your site to rank well and track performance accurately.</p>
+      <ul class="feat-list">
+        <li>Semantic HTML and meta tag optimisation</li>
+        <li>Google Search Console and Analytics setup</li>
+        <li>Sitemap generation and robots.txt</li>
+        <li>Core Web Vitals tuning (LCP, CLS, FID)</li>
+        <li>Image compression and lazy loading</li>
+        <li>Schema markup for rich results</li>
+      </ul>
+      <a href="quotation.html" class="btn-primary">See Add-On Pricing</a>
+    </div>
+    <div class="svc-visual anim">
+      <span class="svc-big-icon">📊</span>
+      <h3>SEO &amp; Analytics</h3>
+      <p>Included as standard on all packages. Advanced tuning available as an add-on.</p>
+      <div class="price-from">Included free in all packages</div>
+      <div class="tech-tags"><span class="tech-tag">Google Analytics</span><span class="tech-tag">Search Console</span><span class="tech-tag">Core Web Vitals</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="svc-section" id="support">
+  <div class="svc-block flip">
+    <div class="svc-text anim">
+      <div class="tag">Maintenance &amp; Support</div>
+      <h2>We Don't Disappear After Launch</h2>
+      <p>Ongoing support is available through our Mode C monthly retainer. We handle updates, security patches, content changes, hosting, and new feature development — so you never have to worry about your site again.</p>
+      <ul class="feat-list">
+        <li>Monthly content updates on request</li>
+        <li>Security monitoring and patch management</li>
+        <li>Hosting management and uptime monitoring</li>
+        <li>Performance checks and speed tuning</li>
+        <li>New feature scoping and development</li>
+        <li>Priority response time for issues</li>
+      </ul>
+      <a href="quotation.html" class="btn-primary">View Retainer Pricing</a>
+    </div>
+    <div class="svc-visual anim">
+      <span class="svc-big-icon">🔧</span>
+      <h3>Maintenance &amp; Support</h3>
+      <p>One flat monthly fee. We handle everything. You focus on running your business.</p>
+      <div class="price-from">From <strong>UGX 200,000/mo</strong></div>
+      <div class="tech-tags"><span class="tech-tag">Mode C Retainer</span><span class="tech-tag">Hosting</span><span class="tech-tag">Updates</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#fff;">
+  <div class="section-center">
+    <div class="section-tag">Pricing Add-Ons</div>
+    <h2 class="section-title">Optional Extras</h2>
+    <p class="section-sub">Available on top of any package. All prices in UGX.</p>
+  </div>
+  <div class="addons-wrap">
+    <table class="addons-table">
+      <thead><tr><th>Item</th><th>Description</th><th>Price (UGX)</th></tr></thead>
+      <tbody>
+        <tr><td>Mode B Training Fee</td><td>Line-by-line code walkthrough session</td><td>150,000</td></tr>
+        <tr><td>Mode C Monthly Retainer</td><td>Developer-managed updates, hosting, maintenance</td><td>200,000/mo</td></tr>
+        <tr><td>Domain Registration</td><td>.com or .co.ug, 1 year</td><td>50,000 – 80,000</td></tr>
+        <tr><td>Web Hosting Setup</td><td>Shared hosting configuration and deployment</td><td>100,000/yr</td></tr>
+        <tr><td>Extra Page</td><td>Additional page beyond package limit</td><td>80,000/page</td></tr>
+        <tr><td>Logo Design</td><td>Custom logo, 3 concepts, 2 revision rounds</td><td>250,000</td></tr>
+        <tr><td>Speed Optimisation</td><td>Image compression, caching, Core Web Vitals</td><td>120,000</td></tr>
+        <tr><td>Extra Revision Round</td><td>Additional revision beyond included rounds</td><td>50,000/round</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="f-logo">CREED <span>PRODUCTIONS</span></div><p>Digital · Mobile · Web<br>Kampala, Uganda</p></div>
+    <div class="footer-links"><h4>Pages</h4><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html">Contact</a><a href="quotation.html">Get Quote</a></div>
+    <div class="footer-links"><h4>Services</h4><a href="#web">Website Dev</a><a href="#mobile">Mobile Apps</a><a href="#webapp">Web Apps</a><a href="#design">UI/UX Design</a></div>
+    <div class="footer-contact-block"><h4>Contact</h4><p>creedproductions.ug@gmail.com</p><p>Kampala, Uganda</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Creed Productions. All rights reserved.</p></div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

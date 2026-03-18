@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Creed Productions</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-wrap { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1fr 1.4fr; gap:48px; align-items:start; }
+.contact-info { display:flex; flex-direction:column; gap:16px; }
+.info-card { background:#fff; border-radius:12px; padding:20px 22px; border:1.5px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.04); display:flex; gap:16px; align-items:flex-start; transition:border-color 0.2s,box-shadow 0.2s; }
+.info-card:hover { border-color:#7c3aed; box-shadow:0 6px 20px rgba(124,58,237,0.1); }
+.info-icon { width:44px; height:44px; border-radius:10px; flex-shrink:0; background:linear-gradient(135deg,#7c3aed,#5b21b6); display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 12px rgba(124,58,237,0.3); }
+.info-text h4 { font-size:13px; font-weight:700; color:#1a1a2e; margin-bottom:4px; }
+.info-text p, .info-text a { font-size:13px; color:#6b7280; text-decoration:none; line-height:1.6; }
+.info-text a:hover { color:#7c3aed; }
+.response-badge { background:linear-gradient(135deg,#f5f3ff,#ede9fe); border:1.5px solid #ddd6fe; border-radius:12px; padding:18px 20px; display:flex; gap:12px; align-items:center; }
+.response-badge .rb-icon { font-size:24px; }
+.response-badge h4 { font-size:13px; font-weight:700; color:#1a1a2e; margin-bottom:2px; }
+.response-badge p { font-size:12px; color:#7c3aed; font-weight:600; }
+.contact-form-wrap { background:#fff; border-radius:16px; padding:36px; border:1.5px solid #e5e7eb; box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+.form-title { font-size:20px; font-weight:800; color:#1a1a2e; margin-bottom:6px; }
+.form-sub { font-size:13px; color:#6b7280; margin-bottom:28px; line-height:1.6; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-group { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+.form-group label { font-size:12px; font-weight:700; color:#374151; letter-spacing:0.3px; }
+.form-group input, .form-group select, .form-group textarea { border:1.5px solid #e5e7eb; border-radius:8px; padding:11px 14px; font-size:13.5px; color:#1a1a2e; font-family:inherit; background:#fafafa; transition:border-color 0.2s,box-shadow 0.2s,background 0.2s; outline:none; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:#7c3aed; background:#fff; box-shadow:0 0 0 3px rgba(124,58,237,0.1); }
+.form-group textarea { resize:vertical; min-height:120px; }
+.form-group select { appearance:none; cursor:pointer; }
+.form-submit { width:100%; background:linear-gradient(135deg,#7c3aed,#5b21b6); color:#fff; border:none; padding:14px; border-radius:8px; font-size:15px; font-weight:700; letter-spacing:0.5px; cursor:pointer; font-family:inherit; box-shadow:0 4px 16px rgba(124,58,237,0.35); transition:transform 0.2s,box-shadow 0.2s; }
+.form-submit:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(124,58,237,0.45); }
+.form-notice { font-size:11.5px; color:#9ca3af; text-align:center; margin-top:10px; line-height:1.6; }
+.success-msg { display:none; background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:10px; padding:18px 20px; text-align:center; margin-top:16px; }
+.success-msg p { font-size:13.5px; color:#166534; font-weight:600; }
+.faq-list { max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+.faq-item { background:#fff; border:1.5px solid #e5e7eb; border-radius:10px; overflow:hidden; }
+.faq-q { padding:16px 20px; font-size:14px; font-weight:700; color:#1a1a2e; cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none; }
+.faq-q::after { content:'+'; font-size:20px; color:#7c3aed; transition:transform 0.25s; }
+.faq-item.open .faq-q::after { transform:rotate(45deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height 0.3s ease; font-size:13px; color:#4b5563; line-height:1.75; padding:0 20px; }
+.faq-item.open .faq-a { max-height:200px; padding:0 20px 16px; }
+@media (max-width:768px) {
+  .contact-wrap { grid-template-columns:1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .contact-form-wrap { padding:24px 20px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CREED <span>PRODUCTIONS</span></a>
+    <button class="nav-toggle" id="navToggle">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="quotation.html" class="nav-cta">Get Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">Get in Touch</div>
+  <h1>Let's Build <span>Something</span></h1>
+  <p>Tell us what you need. We'll get back to you within 24 hours with a clear plan and fixed-price quote.</p>
+</div>
+
+<section class="section" style="background:#fff;">
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="info-card anim"><div class="info-icon">📧</div><div class="info-text"><h4>Email</h4><a href="mailto:creedproductions.ug@gmail.com">creedproductions.ug@gmail.com</a></div></div>
+      <div class="info-card anim"><div class="info-icon">💬</div><div class="info-text"><h4>WhatsApp</h4><a href="https://wa.me/256700000000">+256 700 000 000</a><p>Fastest way to reach us</p></div></div>
+      <div class="info-card anim"><div class="info-icon">📍</div><div class="info-text"><h4>Location</h4><p>Kampala, Uganda</p><p>Remote work accepted worldwide</p></div></div>
+      <div class="info-card anim"><div class="info-icon">🕐</div><div class="info-text"><h4>Working Hours</h4><p>Mon – Fri: 8:00 AM – 7:00 PM EAT</p><p>Sat: 9:00 AM – 2:00 PM EAT</p></div></div>
+      <div class="response-badge anim"><div class="rb-icon">⚡</div><div><h4>Fast Response Guaranteed</h4><p>We reply within 24 hours on working days</p></div></div>
+    </div>
+
+    <div class="contact-form-wrap anim">
+      <div class="form-title">Send Us a Message</div>
+      <div class="form-sub">Fill in your details and we'll follow up with a quote or a call — whichever works best for you.</div>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name *</label><input type="text" placeholder="John" required></div>
+          <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Doe" required></div>
+        </div>
+        <div class="form-group"><label>Email Address *</label><input type="email" placeholder="john@example.com" required></div>
+        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+256 700 000 000"></div>
+        <div class="form-group">
+          <label>Service Interested In *</label>
+          <select required>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Website Development</option>
+            <option>Mobile App Development</option>
+            <option>Web Application / E-Commerce</option>
+            <option>UI/UX Design</option>
+            <option>Maintenance &amp; Support</option>
+            <option>Other / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Approximate Budget</label>
+          <select>
+            <option value="" disabled selected>Select a range…</option>
+            <option>Under UGX 500,000</option>
+            <option>UGX 500,000 – 1,000,000</option>
+            <option>UGX 1,000,000 – 2,000,000</option>
+            <option>UGX 2,000,000 – 5,000,000</option>
+            <option>Over UGX 5,000,000</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Tell Us About Your Project *</label><textarea placeholder="Describe what you need — the more detail, the better our quote will be." required></textarea></div>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <p class="form-notice">We do not share your information with anyone. Ever.</p>
+      </form>
+      <div class="success-msg" id="successMsg"><p>✅ Message sent! We'll get back to you within 24 hours.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#f8f7ff;">
+  <div class="section-center">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+    <p class="section-sub">Before you reach out — these might answer it faster.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item anim"><div class="faq-q">How long does a website take to build?</div><div class="faq-a">Most websites are delivered in 2–7 working days depending on the package. Package 1 (landing page) takes 2–3 days. Package 4 (full web app) can take longer depending on scope — we'll confirm a timeline at quotation stage.</div></div>
+    <div class="faq-item anim"><div class="faq-q">Do you work with clients outside Uganda?</div><div class="faq-a">Yes. We work with clients remotely across Africa and beyond. All communication and file delivery can be handled fully online via email, WhatsApp, or video call.</div></div>
+    <div class="faq-item anim"><div class="faq-q">What do I need to provide before work starts?</div><div class="faq-a">We need your content (text, images, logo, and brand colours) before we begin. If you don't have content, we can assist with copywriting and logo design as add-ons. The more you provide upfront, the faster we deliver.</div></div>
+    <div class="faq-item anim"><div class="faq-q">Will I own the website after it's built?</div><div class="faq-a">Yes — completely. You receive all source files, credentials, and assets. There's no ongoing fee unless you choose Mode C. We don't lock you in.</div></div>
+    <div class="faq-item anim"><div class="faq-q">Can you update my existing website?</div><div class="faq-a">Yes. We take on redesign and maintenance work for existing sites. Contact us with details of your current site and what you need changed and we'll quote accordingly.</div></div>
+    <div class="faq-item anim"><div class="faq-q">How does payment work?</div><div class="faq-a">We work on a 50/25/25 split — 50% before work begins, 25% at design approval, and 25% before the site goes live. We accept Mobile Money and bank transfer.</div></div>
+  </div>
+</section>
+
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="f-logo">CREED <span>PRODUCTIONS</span></div><p>Digital · Mobile · Web<br>Kampala, Uganda</p></div>
+    <div class="footer-links"><h4>Pages</h4><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html">Contact</a><a href="quotation.html">Get Quote</a></div>
+    <div class="footer-links"><h4>Services</h4><a href="services.html#web">Website Dev</a><a href="services.html#mobile">Mobile Apps</a><a href="services.html#webapp">Web Apps</a><a href="services.html#design">UI/UX Design</a></div>
+    <div class="footer-contact-block"><h4>Contact</h4><p>creedproductions.ug@gmail.com</p><p>Kampala, Uganda</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Creed Productions. All rights reserved.</p></div>
+</footer>
+<script src="main.js"></script>
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

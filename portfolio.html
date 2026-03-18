@@ -9,7 +9,6 @@
 .filter-bar { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:44px; }
 .filter-btn { background:#f3f4f6; color:#4b5563; border:1.5px solid #e5e7eb; padding:8px 20px; border-radius:30px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; }
 .filter-btn:hover, .filter-btn.active { background:#7c3aed; color:#fff; border-color:#7c3aed; }
-
 .portfolio-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px; }
 .proj-card { background:#fff; border-radius:14px; overflow:hidden; border:1.5px solid #e5e7eb; transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
 .proj-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(124,58,237,0.14),0 3px 0 #7c3aed; border-color:#7c3aed; }
@@ -21,8 +20,6 @@
 .proj-thumb.orange { background:linear-gradient(135deg,#1c0a00,#7c2d12); }
 .proj-thumb.slate  { background:linear-gradient(135deg,#0f172a,#1e293b); }
 .proj-type-badge { position:absolute; top:12px; right:12px; background:rgba(0,0,0,0.5); backdrop-filter:blur(8px); color:#a78bfa; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:20px; border:1px solid rgba(167,139,250,0.3); }
-.proj-type-badge.live { color:#86efac; border-color:rgba(134,239,172,0.4); }
-.proj-type-badge.testing { color:#fcd34d; border-color:rgba(252,211,77,0.4); }
 .proj-body { padding:22px 22px 18px; }
 .proj-body h3 { font-size:15px; font-weight:700; color:#1a1a2e; margin-bottom:8px; }
 .proj-body p { font-size:12.5px; color:#6b7280; line-height:1.7; margin-bottom:14px; }
@@ -32,62 +29,18 @@
 .proj-platform { font-size:11px; color:#9ca3af; font-weight:600; }
 .proj-link { font-size:12px; font-weight:700; color:#7c3aed; text-decoration:none; padding:6px 14px; border-radius:6px; background:#f5f3ff; transition:background 0.2s; }
 .proj-link:hover { background:#ede9fe; }
-
-/* featured apps */
-.apps-grid { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; }
-
-.app-card {
-  border-radius:16px; overflow:hidden; border:1.5px solid #e5e7eb;
-  box-shadow:0 4px 20px rgba(0,0,0,0.06);
-  transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;
-  background:#fff;
-}
-.app-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(124,58,237,0.16),0 3px 0 #7c3aed; border-color:#7c3aed; }
-
-.app-card-top {
-  height:140px; display:flex; align-items:center; justify-content:center;
-  position:relative;
-}
-.app-card-top.grad-unisaver { background:linear-gradient(135deg,#0f0c29,#1e3a8a,#302b63); }
-.app-card-top.grad-statdl   { background:linear-gradient(135deg,#042f2e,#134e4a,#065f46); }
-.app-card-top.grad-studio   { background:linear-gradient(135deg,#2d0a1e,#4c1d95,#1e3a8a); }
-.app-card-top.grad-guess    { background:linear-gradient(135deg,#1c0a00,#7c2d12,#92400e); }
-
-.app-icon-wrap {
-  width:80px; height:80px; border-radius:18px; overflow:hidden;
-  box-shadow:0 8px 24px rgba(0,0,0,0.4);
-  display:flex; align-items:center; justify-content:center;
-  font-size:36px; font-weight:800; color:#fff;
-  position:relative; z-index:1;
-}
-/* icon colours matching real app icons */
-.app-icon-wrap.unisaver { background:linear-gradient(135deg,#e0f2fe,#bae6fd); color:#0369a1; }
-.app-icon-wrap.statusdl { background:linear-gradient(135deg,#a7f3d0,#34d399); color:#065f46; }
-.app-icon-wrap.studio   { background:linear-gradient(135deg,#a78bfa,#ec4899,#f97316); color:#fff; }
-.app-icon-wrap.guess    { background:linear-gradient(135deg,#fbbf24,#f97316,#ef4444); color:#fff; }
-
-.status-pill {
-  position:absolute; top:12px; right:12px;
-  font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
-  padding:4px 11px; border-radius:20px; backdrop-filter:blur(8px);
-}
-.status-pill.live     { background:rgba(16,185,129,0.2); color:#6ee7b7; border:1px solid rgba(110,231,183,0.4); }
-.status-pill.testing  { background:rgba(251,191,36,0.15); color:#fcd34d; border:1px solid rgba(252,211,77,0.4); }
-
-.app-card-body { padding:20px 22px 18px; }
-.app-name { font-size:16px; font-weight:800; color:#1a1a2e; margin-bottom:4px; }
-.app-package { font-size:11px; color:#9ca3af; font-weight:600; letter-spacing:0.5px; margin-bottom:10px; font-family:monospace; }
-.app-desc { font-size:12.5px; color:#6b7280; line-height:1.7; margin-bottom:14px; }
-.app-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
-.app-tag { font-size:10.5px; font-weight:600; padding:3px 10px; border-radius:20px; background:#f5f3ff; color:#7c3aed; border:1px solid #ede9fe; }
-.app-footer { display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid #f3f4f6; }
-.app-platform { font-size:11px; color:#9ca3af; font-weight:600; }
-.app-store-btn { font-size:12px; font-weight:700; color:#fff; text-decoration:none; padding:7px 16px; border-radius:7px; background:linear-gradient(135deg,#7c3aed,#5b21b6); transition:opacity 0.2s; }
-.app-store-btn:hover { opacity:0.85; }
-.app-store-btn.disabled { background:#e5e7eb; color:#9ca3af; cursor:default; }
-
+.featured-project { max-width:1060px; margin:0 auto 40px; background:linear-gradient(135deg,#0f0c29,#302b63); border-radius:16px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; box-shadow:0 20px 60px rgba(124,58,237,0.25); }
+.feat-left { padding:52px 44px; display:flex; flex-direction:column; justify-content:center; }
+.feat-tag { font-size:10.5px; letter-spacing:3px; color:#a78bfa; text-transform:uppercase; font-weight:700; margin-bottom:16px; }
+.feat-left h2 { font-size:clamp(20px,3vw,32px); font-weight:800; color:#fff; margin-bottom:14px; line-height:1.2; }
+.feat-left p { font-size:13.5px; color:#c4b5fd; line-height:1.8; margin-bottom:24px; }
+.feat-badges { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.feat-badge { background:rgba(124,58,237,0.25); border:1px solid rgba(167,139,250,0.3); color:#a78bfa; font-size:11px; font-weight:600; padding:4px 12px; border-radius:20px; }
+.feat-right { display:flex; align-items:center; justify-content:center; font-size:90px; background:rgba(124,58,237,0.1); border-left:1px solid rgba(167,139,250,0.15); }
 @media (max-width:768px) {
-  .apps-grid { grid-template-columns:1fr; }
+  .featured-project { grid-template-columns:1fr; }
+  .feat-right { height:140px; font-size:60px; border-left:none; border-top:1px solid rgba(167,139,250,0.15); }
+  .feat-left { padding:28px 22px; }
   .portfolio-grid { grid-template-columns:1fr; }
 }
 </style>
@@ -111,158 +64,92 @@
 <div class="page-hero">
   <div class="page-hero-tag">Our Work</div>
   <h1>Projects We're <span>Proud Of</span></h1>
-  <p>Live apps on Google Play, plus websites and web applications built for clients across Uganda.</p>
+  <p>A selection of websites, mobile apps, and web applications built by Creed Productions.</p>
 </div>
 
-<!-- OUR APPS -->
 <section class="section" style="background:#fff;">
   <div class="section-center">
-    <div class="section-tag">Published by Creed Productions</div>
-    <h2 class="section-title">Our Apps on Google Play</h2>
-    <p class="section-sub">We build and ship our own products — these are all live under the Creed brand on the Play Store.</p>
+    <div class="section-tag">Featured Products</div>
+    <h2 class="section-title">Our Own Apps — Live on the Stores</h2>
+    <p class="section-sub">We build and ship our own products. These are live on Google Play.</p>
   </div>
 
-  <div class="apps-grid">
-
-    <!-- Unisaver -->
-    <div class="app-card anim">
-      <div class="app-card-top grad-unisaver">
-        <div class="app-icon-wrap unisaver">⬇</div>
-        <div class="status-pill live">● Live</div>
+  <div class="featured-project anim">
+    <div class="feat-left">
+      <div class="feat-tag">⭐ Featured — Live App</div>
+      <h2>Unisaver – Media Downloader</h2>
+      <p>A cross-platform media downloader and browser utility for Android and iOS. Supports video and audio downloads, an in-app browser, and a freemium subscription model. Built entirely in Flutter.</p>
+      <div class="feat-badges">
+        <span class="feat-badge">Flutter</span><span class="feat-badge">Firebase</span>
+        <span class="feat-badge">Android</span><span class="feat-badge">iOS</span>
+        <span class="feat-badge">Google Play</span>
       </div>
-      <div class="app-card-body">
-        <div class="app-name">Unisaver: Browser &amp; Downloader</div>
-        <div class="app-package">com.creed.unisaver</div>
-        <div class="app-desc">A cross-platform media downloader and in-app browser. Download videos and audio from social platforms, manage downloads, and browse the web — all in one app. Freemium model with subscription tiers.</div>
-        <div class="app-tags"><span class="app-tag">Flutter</span><span class="app-tag">Firebase</span><span class="app-tag">In-App Browser</span><span class="app-tag">Subscriptions</span><span class="app-tag">Android</span></div>
-        <div class="app-footer">
-          <span class="app-platform">Production · Google Play</span>
-          <a href="https://play.google.com/store/apps/details?id=com.creed.unisaver" target="_blank" class="app-store-btn">View on Play →</a>
-        </div>
-      </div>
+      <a href="#" class="btn-primary">View on Google Play</a>
     </div>
-
-    <!-- Status Downloader -->
-    <div class="app-card anim">
-      <div class="app-card-top grad-statdl">
-        <div class="app-icon-wrap statusdl">S</div>
-        <div class="status-pill live">● Live</div>
-      </div>
-      <div class="app-card-body">
-        <div class="app-name">Status Downloader</div>
-        <div class="app-package">com.creed.statuszone_downloader</div>
-        <div class="app-desc">Save WhatsApp statuses — photos and videos — directly to your gallery with a single tap. Clean, fast, and lightweight. One of our earliest published apps, still in active production.</div>
-        <div class="app-tags"><span class="app-tag">Flutter</span><span class="app-tag">File Management</span><span class="app-tag">WhatsApp</span><span class="app-tag">Android</span></div>
-        <div class="app-footer">
-          <span class="app-platform">Production · Google Play</span>
-          <a href="https://play.google.com/store/apps/details?id=com.creed.statuszone_downloader" target="_blank" class="app-store-btn">View on Play →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Guess Word -->
-    <div class="app-card anim">
-      <div class="app-card-top grad-guess">
-        <div class="app-icon-wrap guess">W</div>
-        <div class="status-pill live">● Live</div>
-      </div>
-      <div class="app-card-body">
-        <div class="app-name">Guess Word: A Hangman Game</div>
-        <div class="app-package">com.creed.guess_word</div>
-        <div class="app-desc">A modern take on the classic hangman game. Multiple categories, difficulty levels, and a clean UI built entirely in Flutter. A fun side project that demonstrates our range beyond utility apps.</div>
-        <div class="app-tags"><span class="app-tag">Flutter</span><span class="app-tag">Game</span><span class="app-tag">Word Puzzle</span><span class="app-tag">Android</span></div>
-        <div class="app-footer">
-          <span class="app-platform">Production · Google Play</span>
-          <a href="https://play.google.com/store/apps/details?id=com.creed.guess_word" target="_blank" class="app-store-btn">View on Play →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Status Studio -->
-    <div class="app-card anim">
-      <div class="app-card-top grad-studio">
-        <div class="app-icon-wrap studio">✏️</div>
-        <div class="status-pill testing">⏳ Closed Testing</div>
-      </div>
-      <div class="app-card-body">
-        <div class="app-name">Status Studio: Story Maker</div>
-        <div class="app-package">com.creed.status_studio</div>
-        <div class="app-desc">A full mobile creative suite for designing social media posts and stories. Canvas editor with text, shapes, stickers, music, photo/video layers, and multi-quality export. Currently in closed testing ahead of full launch.</div>
-        <div class="app-tags"><span class="app-tag">Flutter</span><span class="app-tag">Canvas Editor</span><span class="app-tag">Video Export</span><span class="app-tag">Android</span></div>
-        <div class="app-footer">
-          <span class="app-platform">Closed Testing · Coming Soon</span>
-          <span class="app-store-btn disabled">Coming Soon</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- StatZone Downloader -->
-    <div class="app-card anim">
-      <div class="app-card-top grad-statdl" style="background:linear-gradient(135deg,#1e293b,#334155,#0f172a);">
-        <div class="app-icon-wrap statusdl" style="background:linear-gradient(135deg,#334155,#1e293b); color:#94a3b8;">S</div>
-        <div class="status-pill testing">⏳ Closed Testing</div>
-      </div>
-      <div class="app-card-body">
-        <div class="app-name">StatZone Downloader</div>
-        <div class="app-package">com.creed.statzone_downloader</div>
-        <div class="app-desc">An updated and rebranded version of our status downloader, with expanded support and a refreshed UI. Currently undergoing closed testing before production rollout.</div>
-        <div class="app-tags"><span class="app-tag">Flutter</span><span class="app-tag">File Management</span><span class="app-tag">Android</span></div>
-        <div class="app-footer">
-          <span class="app-platform">Closed Testing · Coming Soon</span>
-          <span class="app-store-btn disabled">Coming Soon</span>
-        </div>
-      </div>
-    </div>
-
+    <div class="feat-right">📱</div>
   </div>
-</section>
 
-<!-- CLIENT PROJECTS -->
-<section class="section" style="background:#f8f7ff;">
-  <div class="section-center">
-    <div class="section-tag">Client Work</div>
-    <h2 class="section-title">Websites &amp; Web Apps</h2>
-    <p class="section-sub">A selection of client projects across website development and full-stack web applications.</p>
+  <div class="featured-project anim" style="background:linear-gradient(135deg,#042f2e,#134e4a); box-shadow:0 20px 60px rgba(4,120,87,0.2);">
+    <div class="feat-left">
+      <div class="feat-tag" style="color:#6ee7b7;">⭐ Featured — Live App</div>
+      <h2>Status Studio – Creative Editor</h2>
+      <p>A mobile creative suite for designing and editing social media posts, stories, and status updates. Full canvas editor with text, shapes, stickers, music, and multi-quality export.</p>
+      <div class="feat-badges">
+        <span class="feat-badge" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.3);color:#6ee7b7;">Flutter</span>
+        <span class="feat-badge" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.3);color:#6ee7b7;">Canvas Editor</span>
+        <span class="feat-badge" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.3);color:#6ee7b7;">Android</span>
+        <span class="feat-badge" style="background:rgba(16,185,129,0.2);border-color:rgba(52,211,153,0.3);color:#6ee7b7;">Video Export</span>
+      </div>
+      <a href="#" class="btn-primary" style="background:linear-gradient(135deg,#059669,#047857);">View on Google Play</a>
+    </div>
+    <div class="feat-right" style="background:rgba(16,185,129,0.08);border-left-color:rgba(52,211,153,0.15);">🎨</div>
   </div>
-  <div style="max-width:1100px; margin:0 auto;">
+
+  <!-- PROJECT CARDS -->
+  <div style="max-width:1100px; margin:60px auto 0;">
+    <div class="section-center" style="margin-bottom:32px;">
+      <div class="section-tag">Client Projects</div>
+      <h2 class="section-title">More Work</h2>
+    </div>
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="web">Websites</button>
+      <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
       <button class="filter-btn" data-filter="webapp">Web Apps</button>
     </div>
     <div class="portfolio-grid" id="portfolioGrid">
       <div class="proj-card anim" data-type="web">
-        <div class="proj-thumb purple"><span>🏢</span><div class="proj-type-badge live">Website</div></div>
-        <div class="proj-body"><h3>Corporate Portal – Financial Services</h3><p>10-page corporate site with full CMS, staff profiles, news section, and multi-level navigation.</p><div class="proj-tags"><span class="proj-tag">HTML/CSS</span><span class="proj-tag">PHP</span><span class="proj-tag">CMS</span></div><div class="proj-footer"><span class="proj-platform">Web · Mode A</span><a href="#" class="proj-link">View →</a></div></div>
+        <div class="proj-thumb purple"><span>🏢</span><div class="proj-type-badge">Website</div></div>
+        <div class="proj-body"><h3>Corporate Portal – Financial Services</h3><p>10-page corporate site with full CMS, staff profiles, news section, and multi-level navigation. Package 3 delivery.</p><div class="proj-tags"><span class="proj-tag">HTML/CSS</span><span class="proj-tag">PHP</span><span class="proj-tag">CMS</span></div><div class="proj-footer"><span class="proj-platform">Web · Mode A</span><a href="#" class="proj-link">View →</a></div></div>
       </div>
       <div class="proj-card anim" data-type="web">
-        <div class="proj-thumb blue"><span>🏨</span><div class="proj-type-badge live">Website</div></div>
+        <div class="proj-thumb blue"><span>🏨</span><div class="proj-type-badge">Website</div></div>
         <div class="proj-body"><h3>Tourism &amp; Hospitality Website</h3><p>5-page business site for a Ugandan tourism company with gallery, tour listings, booking form, and WhatsApp integration.</p><div class="proj-tags"><span class="proj-tag">HTML/CSS</span><span class="proj-tag">JS</span><span class="proj-tag">Google Maps</span></div><div class="proj-footer"><span class="proj-platform">Web · Mode B</span><a href="#" class="proj-link">View →</a></div></div>
       </div>
       <div class="proj-card anim" data-type="webapp">
-        <div class="proj-thumb teal"><span>🛒</span><div class="proj-type-badge live">Web App</div></div>
+        <div class="proj-thumb teal"><span>🛒</span><div class="proj-type-badge">Web App</div></div>
         <div class="proj-body"><h3>E-Commerce Platform – Retail</h3><p>Full-stack e-commerce with product catalogue, Mobile Money payments, user accounts, and an admin dashboard with reporting.</p><div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">REST API</span><span class="proj-tag">MTN MoMo</span></div><div class="proj-footer"><span class="proj-platform">Web App · Mode C</span><a href="#" class="proj-link">View →</a></div></div>
       </div>
       <div class="proj-card anim" data-type="web">
-        <div class="proj-thumb pink"><span>💅</span><div class="proj-type-badge live">Website</div></div>
+        <div class="proj-thumb pink"><span>💅</span><div class="proj-type-badge">Website</div></div>
         <div class="proj-body"><h3>Beauty &amp; Wellness Landing Page</h3><p>High-converting single-page site — animated hero, service menu, testimonials, booking form, and Instagram feed.</p><div class="proj-tags"><span class="proj-tag">HTML/CSS</span><span class="proj-tag">Animations</span><span class="proj-tag">SEO</span></div><div class="proj-footer"><span class="proj-platform">Web · Mode A</span><a href="#" class="proj-link">View →</a></div></div>
       </div>
-      <div class="proj-card anim" data-type="webapp">
-        <div class="proj-thumb slate"><span>📋</span><div class="proj-type-badge live">Web App</div></div>
-        <div class="proj-body"><h3>School Management System</h3><p>Web app for a Ugandan school — student records, fee tracking, results management, teacher portal, and SMS notifications.</p><div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">SMS API</span></div><div class="proj-footer"><span class="proj-platform">Web App · Mode C</span><a href="#" class="proj-link">View →</a></div></div>
+      <div class="proj-card anim" data-type="mobile">
+        <div class="proj-thumb orange"><span>🍔</span><div class="proj-type-badge">Mobile App</div></div>
+        <div class="proj-body"><h3>Food Delivery App – Android</h3><p>Flutter food ordering app with real-time order tracking, restaurant listings, cart management, and Mobile Money checkout.</p><div class="proj-tags"><span class="proj-tag">Flutter</span><span class="proj-tag">Firebase</span><span class="proj-tag">Google Maps</span></div><div class="proj-footer"><span class="proj-platform">Android · Google Play</span><a href="#" class="proj-link">View →</a></div></div>
       </div>
-      <div class="proj-card anim" data-type="web">
-        <div class="proj-thumb orange"><span>🍽️</span><div class="proj-type-badge live">Website</div></div>
-        <div class="proj-body"><h3>Restaurant &amp; Catering Website</h3><p>5-page business site with menu showcase, online reservation form, photo gallery, and Google Maps integration.</p><div class="proj-tags"><span class="proj-tag">HTML/CSS</span><span class="proj-tag">JS</span><span class="proj-tag">Animations</span></div><div class="proj-footer"><span class="proj-platform">Web · Mode A</span><a href="#" class="proj-link">View →</a></div></div>
+      <div class="proj-card anim" data-type="webapp">
+        <div class="proj-thumb slate"><span>📋</span><div class="proj-type-badge">Web App</div></div>
+        <div class="proj-body"><h3>School Management System</h3><p>Web app for a Ugandan school — student records, fee tracking, results management, teacher portal, and SMS notifications.</p><div class="proj-tags"><span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">SMS API</span></div><div class="proj-footer"><span class="proj-platform">Web App · Mode C</span><a href="#" class="proj-link">View →</a></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <section style="background:linear-gradient(135deg,#7c3aed,#5b21b6);padding:70px 24px;text-align:center;">
-  <h2 style="font-size:clamp(22px,4vw,36px);font-weight:800;color:#fff;margin-bottom:14px;">Want to Build the Next One?</h2>
+  <h2 style="font-size:clamp(22px,4vw,36px);font-weight:800;color:#fff;margin-bottom:14px;">Want to Be on This Page?</h2>
   <p style="font-size:15px;color:#ddd6fe;margin-bottom:32px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7;">Every project starts with a conversation. Tell us what you need and we'll tell you what it costs.</p>
-  <a href="contact.html" style="display:inline-block;background:#fff;color:#7c3aed;padding:14px 36px;border-radius:8px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.2);">Start a Project</a>
+  <a href="contact.html" style="display:inline-block;background:#fff;color:#7c3aed;padding:14px 36px;border-radius:8px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:transform 0.2s;">Start a Project</a>
 </section>
 
 <footer class="footer-main">
@@ -274,7 +161,6 @@
   </div>
   <div class="footer-bottom"><p>© 2026 Creed Productions. All rights reserved.</p></div>
 </footer>
-
 <script src="main.js"></script>
 <script>
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -289,4 +175,4 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 </script>
 </body>
-                                                                                                                                                                                             </html>
+</html>

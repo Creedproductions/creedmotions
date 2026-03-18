@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team – Creed Productions</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.team-grid { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; }
+.member-card { background:#fff; border-radius:16px; overflow:hidden; border:1.5px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.04); transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s; }
+.member-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(124,58,237,0.14),0 3px 0 #7c3aed; border-color:#7c3aed; }
+.member-top { height:120px; display:flex; align-items:center; justify-content:center; position:relative; }
+.member-top.grad-a { background:linear-gradient(135deg,#0f0c29,#302b63); }
+.member-top.grad-b { background:linear-gradient(135deg,#042f2e,#134e4a); }
+.member-top.grad-c { background:linear-gradient(135deg,#1c1917,#44403c); }
+.member-top.grad-d { background:linear-gradient(135deg,#0c1445,#1e3a8a); }
+.member-top.grad-e { background:linear-gradient(135deg,#2d0a1e,#831843); }
+.member-top.grad-f { background:linear-gradient(135deg,#1c0a00,#7c2d12); }
+.member-avatar { width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg,#7c3aed,#302b63); display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:800; color:#fff; border:3px solid rgba(255,255,255,0.15); box-shadow:0 6px 20px rgba(0,0,0,0.3); position:relative; z-index:1; }
+.member-role-badge { position:absolute; bottom:10px; right:12px; background:rgba(0,0,0,0.5); backdrop-filter:blur(8px); color:#a78bfa; font-size:9.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:20px; border:1px solid rgba(167,139,250,0.25); }
+.member-body { padding:22px 22px 20px; }
+.member-name { font-size:16px; font-weight:800; color:#1a1a2e; margin-bottom:3px; }
+.member-title { font-size:12px; color:#7c3aed; font-weight:600; letter-spacing:0.5px; margin-bottom:12px; }
+.member-bio { font-size:12.5px; color:#6b7280; line-height:1.75; margin-bottom:16px; }
+.member-skills { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+.skill-tag { font-size:10.5px; font-weight:600; padding:3px 10px; border-radius:20px; background:#f5f3ff; color:#7c3aed; border:1px solid #ede9fe; }
+.member-footer { padding-top:14px; border-top:1px solid #f3f4f6; display:flex; gap:10px; }
+.social-link { font-size:11px; font-weight:700; color:#7c3aed; text-decoration:none; padding:5px 12px; border-radius:6px; background:#f5f3ff; transition:background 0.2s; }
+.social-link:hover { background:#ede9fe; }
+.member-card.lead { grid-column:span 2; }
+.member-card.lead .member-top { height:160px; }
+.member-card.lead .member-avatar { width:88px; height:88px; font-size:32px; }
+.member-card.lead .member-name { font-size:20px; }
+.member-card.lead .member-body { padding:26px 28px 22px; }
+.values-grid { max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+.value-card { background:#fff; border-radius:12px; padding:24px 20px; text-align:center; border:1.5px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.value-icon { font-size:28px; margin-bottom:12px; }
+.value-card h4 { font-size:14px; font-weight:700; color:#1a1a2e; margin-bottom:8px; }
+.value-card p { font-size:12.5px; color:#6b7280; line-height:1.65; }
+@media (max-width:768px) {
+  .member-card.lead { grid-column:span 1; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">CREED <span>PRODUCTIONS</span></a>
+    <button class="nav-toggle" id="navToggle">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="quotation.html" class="nav-cta">Get Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">The People</div>
+  <h1>Small Team. <span>Senior Talent.</span></h1>
+  <p>Every member is directly involved in your project — no account managers, no handoffs.</p>
+</div>
+
+<section class="section" style="background:#fff;">
+  <div class="section-center">
+    <div class="section-tag">Our Team</div>
+    <h2 class="section-title">Meet Creed Productions</h2>
+    <p class="section-sub">A focused studio where every role matters and every person ships real work.</p>
+  </div>
+  <div class="team-grid">
+
+    <div class="member-card lead anim">
+      <div class="member-top grad-a">
+        <div class="member-avatar">M</div>
+        <div class="member-role-badge">Founder</div>
+      </div>
+      <div class="member-body">
+        <div class="member-name">Mike</div>
+        <div class="member-title">Founder &amp; Lead Developer</div>
+        <div class="member-bio">Mike founded Creed Productions and leads all development work. A full-stack developer and Flutter specialist, he has built and shipped multiple production apps to the Play Store and App Store — including Unisaver and Status Studio. He handles architecture, backend, mobile, and client relations.</div>
+        <div class="member-skills"><span class="skill-tag">Flutter</span><span class="skill-tag">Dart</span><span class="skill-tag">Firebase</span><span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">REST API</span><span class="skill-tag">Android</span><span class="skill-tag">iOS</span></div>
+        <div class="member-footer"><a href="contact.html" class="social-link">Contact Mike</a><a href="portfolio.html" class="social-link">View Work</a></div>
+      </div>
+    </div>
+
+    <div class="member-card anim">
+      <div class="member-top grad-b"><div class="member-avatar" style="background:linear-gradient(135deg,#059669,#047857);">A</div><div class="member-role-badge">Designer</div></div>
+      <div class="member-body">
+        <div class="member-name">Aisha</div>
+        <div class="member-title">UI/UX Designer</div>
+        <div class="member-bio">Aisha leads all interface design — wireframes, mockups, and full design systems. She ensures every product looks polished and is intuitive to use before development begins.</div>
+        <div class="member-skills"><span class="skill-tag">Figma</span><span class="skill-tag">Adobe XD</span><span class="skill-tag">Illustrator</span><span class="skill-tag">Branding</span><span class="skill-tag">Prototyping</span></div>
+        <div class="member-footer"><a href="contact.html" class="social-link">Get in Touch</a></div>
+      </div>
+    </div>
+
+    <div class="member-card anim">
+      <div class="member-top grad-d"><div class="member-avatar" style="background:linear-gradient(135deg,#1d4ed8,#1e40af);">D</div><div class="member-role-badge">Developer</div></div>
+      <div class="member-body">
+        <div class="member-name">Daniel</div>
+        <div class="member-title">Frontend Developer</div>
+        <div class="member-bio">Daniel specialises in converting designs into clean, pixel-perfect, responsive HTML/CSS/JS. He handles all web animation, performance optimisation, and CMS integration.</div>
+        <div class="member-skills"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span><span class="skill-tag">GSAP</span><span class="skill-tag">SEO</span></div>
+        <div class="member-footer"><a href="contact.html" class="social-link">Get in Touch</a></div>
+      </div>
+    </div>
+
+    <div class="member-card anim">
+      <div class="member-top grad-c"><div class="member-avatar" style="background:linear-gradient(135deg,#57534e,#292524);">S</div><div class="member-role-badge">Backend</div></div>
+      <div class="member-body">
+        <div class="member-name">Samuel</div>
+        <div class="member-title">Backend &amp; Database Engineer</div>
+        <div class="member-bio">Samuel handles all server-side logic, database architecture, and API development. He leads the backend on web application and e-commerce projects, including payment integrations.</div>
+        <div class="member-skills"><span class="skill-tag">PHP</span><span class="skill-tag">Node.js</span><span class="skill-tag">MySQL</span><span class="skill-tag">REST API</span><span class="skill-tag">Docker</span><span class="skill-tag">Linux</span></div>
+        <div class="member-footer"><a href="contact.html" class="social-link">Get in Touch</a></div>
+      </div>
+    </div>
+
+    <div class="member-card anim">
+      <div class="member-top grad-e"><div class="member-avatar" style="background:linear-gradient(135deg,#9d174d,#831843);">P</div><div class="member-role-badge">QA</div></div>
+      <div class="member-body">
+        <div class="member-name">Patricia</div>
+        <div class="member-title">QA &amp; Testing Lead</div>
+        <div class="member-bio">Patricia tests every project across devices and browsers before delivery. She also handles client-facing documentation and user acceptance testing coordination.</div>
+        <div class="member-skills"><span class="skill-tag">Manual Testing</span><span class="skill-tag">UAT</span><span class="skill-tag">Documentation</span><span class="skill-tag">Cross-Browser</span></div>
+        <div class="member-footer"><a href="contact.html" class="social-link">Get in Touch</a></div>
+      </div>
+    </div>
+
+    <div class="member-card anim">
+      <div class="member-top grad-f"><div class="member-avatar" style="background:linear-gradient(135deg,#b45309,#92400e);">R</div><div class="member-role-badge">Content</div></div>
+      <div class="member-body">
+        <div class="member-name">Ruth</div>
+        <div class="member-title">Content &amp; Copywriter</div>
+        <div class="member-bio">Ruth writes and structures web content for clients — homepage copy, service descriptions, blog posts, and SEO-optimised page content.</div>
+        <div class="member-skills"><span class="skill-tag">Copywriting</span><span class="skill-tag">SEO Content</span><span class="skill-tag">Blog Writing</span><span class="skill-tag">UX Writing</span></div>
+        <div class="member-footer"><a href="contact.html" class="social-link">Get in Touch</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" style="background:#f8f7ff;">
+  <div class="section-center">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">Our Values</h2>
+    <p class="section-sub">The principles that guide every project we take on.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card anim"><div class="value-icon">✍️</div><h4>Craft Over Shortcuts</h4><p>We write real code. Every element is intentional, clean, and maintained long-term.</p></div>
+    <div class="value-card anim"><div class="value-icon">🤝</div><h4>Honest Communication</h4><p>Fixed prices, clear timelines, and direct feedback. No surprises on either side.</p></div>
+    <div class="value-card anim"><div class="value-icon">⚡</div><h4>Speed Without Cutting Corners</h4><p>Fast delivery is part of our process — never at the expense of quality or testing.</p></div>
+    <div class="value-card anim"><div class="value-icon">🔓</div><h4>Client Ownership</h4><p>You get every file, credential, and asset. We build for you, not a dependency on us.</p></div>
+  </div>
+</section>
+
+<section style="background:linear-gradient(135deg,#0f0c29,#302b63);padding:80px 24px;text-align:center;">
+  <div class="section-tag" style="color:#a78bfa;margin-bottom:14px;">Work With Us</div>
+  <h2 style="font-size:clamp(24px,4vw,38px);font-weight:800;color:#fff;margin-bottom:14px;">Interested in Joining the Team?</h2>
+  <p style="font-size:15px;color:#c4b5fd;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;">We occasionally bring on skilled developers, designers, and writers on a project basis. If you have the skills and the work ethic, reach out.</p>
+  <a href="contact.html" style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;padding:14px 36px;border-radius:8px;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,0.4);">Send Us a Message</a>
+</section>
+
+<footer class="footer-main">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="f-logo">CREED <span>PRODUCTIONS</span></div><p>Digital · Mobile · Web<br>Kampala, Uganda</p></div>
+    <div class="footer-links"><h4>Pages</h4><a href="services.html">Services</a><a href="portfolio.html">Portfolio</a><a href="team.html">Team</a><a href="contact.html">Contact</a><a href="quotation.html">Get Quote</a></div>
+    <div class="footer-links"><h4>Services</h4><a href="services.html#web">Website Dev</a><a href="services.html#mobile">Mobile Apps</a><a href="services.html#webapp">Web Apps</a><a href="services.html#design">UI/UX Design</a></div>
+    <div class="footer-contact-block"><h4>Contact</h4><p>creedproductions.ug@gmail.com</p><p>Kampala, Uganda</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Creed Productions. All rights reserved.</p></div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
