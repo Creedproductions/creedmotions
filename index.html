@@ -1,342 +1,486 @@
-import { useState } from "react";
-
-const docHTML = `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quotation – Creed Productions</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a2e;-webkit-print-color-adjust:exact;print-color-adjust:exact;width:210mm;margin:0 auto;}
-@page{size:A4;margin:0;}
-@media print{body{width:210mm;}section{page-break-inside:avoid;}}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
-/* HEADER */
-.hdr{background:linear-gradient(135deg,#0f0c29 0%,#302b63 55%,#24243e 100%);padding:32px 40px 24px;position:relative;overflow:hidden;}
-.hdr::before{content:'';position:absolute;top:-50px;right:-50px;width:240px;height:240px;background:radial-gradient(circle,rgba(124,58,237,.35) 0%,transparent 70%);border-radius:50%;}
-.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1;}
-.brand{font-size:24px;font-weight:800;letter-spacing:3px;color:#fff;text-shadow:0 2px 10px rgba(124,58,237,.5);}
-.brand-sub{font-size:9px;letter-spacing:3px;color:#a78bfa;text-transform:uppercase;margin-top:3px;}
-.doc-right{text-align:right;}
-.doc-right h2{font-size:18px;font-weight:700;color:#a78bfa;letter-spacing:2px;}
-.doc-right p{font-size:10.5px;color:#c4b5fd;margin-top:2px;}
-.doc-right .wh{color:#fff;font-weight:600;margin-top:4px;}
-.hdiv{border:none;border-top:1px solid rgba(167,139,250,.25);margin:18px 0 14px;position:relative;z-index:1;}
-.hmeta{display:flex;gap:20px;font-size:10.5px;color:#c4b5fd;position:relative;z-index:1;flex-wrap:wrap;}
-.hmeta b{color:#fff;font-weight:600;}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* BODY */
-.bdy{padding:32px 40px;}
-.intro{font-size:12.5px;color:#4b5563;line-height:1.8;margin-bottom:28px;border-left:3px solid #7c3aed;padding-left:13px;}
-.stitle{font-size:9.5px;letter-spacing:2.5px;color:#7c3aed;text-transform:uppercase;font-weight:700;margin-bottom:11px;margin-top:24px;}
+  body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #0d0d1a;
+    color: #1a1a2e;
+    min-height: 100vh;
+    padding: 30px 16px;
+  }
 
-/* MODES */
-.modes{display:flex;flex-direction:column;gap:9px;margin-bottom:4px;}
-.mode{border-radius:7px;padding:13px 17px;border:1.5px solid #e5e7eb;}
-.mhdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
-.mname{font-size:12.5px;font-weight:700;color:#1a1a2e;}
-.mtag{font-size:9.5px;font-weight:600;color:#7c3aed;background:#f5f3ff;padding:2px 9px;border-radius:20px;}
-.mdesc{font-size:11.5px;color:#4b5563;line-height:1.65;}
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      0 2px 0 #7c3aed,
+      0 20px 60px rgba(124,58,237,0.25),
+      0 60px 120px rgba(0,0,0,0.5);
+    transform: perspective(1200px) rotateX(1deg);
+    transform-origin: top center;
+  }
 
-/* PACKAGES */
-.pkgs{display:flex;flex-direction:column;gap:12px;margin-bottom:4px;}
-.pkg{border:1.5px solid #e5e7eb;border-radius:9px;overflow:hidden;}
-.pkg.hi{border-color:#7c3aed;}
-.phdr{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#fafafa;}
-.pkg.hi .phdr{background:linear-gradient(90deg,#f5f3ff,#ede9fe);}
-.pleft{display:flex;flex-direction:column;gap:3px;}
-.pname{font-size:12.5px;font-weight:700;color:#1a1a2e;}
-.pprice{font-size:15px;font-weight:800;color:#7c3aed;white-space:nowrap;}
-.badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px;}
-.badge{font-size:8.5px;font-weight:600;padding:1px 7px;border-radius:20px;}
-.ba{background:#dcfce7;color:#166534;}
-.bb{background:#fef9c3;color:#854d0e;}
-.bc{background:#ede9fe;color:#5b21b6;}
-.pbdy{padding:12px 16px;}
-.pdesc{font-size:11.5px;color:#6b7280;margin-bottom:9px;}
-.feats{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;}
-.feat{font-size:11px;color:#374151;display:flex;align-items:flex-start;gap:5px;line-height:1.4;}
-.feat::before{content:'–';color:#7c3aed;font-weight:700;flex-shrink:0;}
-.mleg{margin-top:9px;padding:7px 11px;background:#f9fafb;border-radius:5px;font-size:10.5px;color:#4b5563;line-height:1.65;}
-.mleg b{color:#1a1a2e;}
-.pfoot{font-size:10.5px;color:#9ca3af;margin-top:9px;padding-top:8px;border-top:1px solid #f3f4f6;}
-.pfoot b{color:#374151;font-weight:600;}
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 55%, #24243e 100%);
+    padding: 44px 52px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(167,139,250,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+  .brand-name {
+    font-size: 30px; font-weight: 800; letter-spacing: 3px; color: #fff;
+    text-shadow: 0 2px 12px rgba(124,58,237,0.6), 0 0 40px rgba(167,139,250,0.3);
+  }
+  .brand-tag { font-size: 11px; letter-spacing: 3px; color: #a78bfa; text-transform: uppercase; margin-top: 4px; }
+  .doc-label { text-align: right; }
+  .doc-label h2 { font-size: 22px; font-weight: 700; color: #a78bfa; letter-spacing: 2px; }
+  .doc-label p { font-size: 12px; color: #c4b5fd; margin-top: 3px; }
+  .doc-label .valid { color: #fff; font-weight: 600; margin-top: 6px; }
+  .header-divider { border: none; border-top: 1px solid rgba(167,139,250,0.25); margin: 24px 0 18px; position: relative; z-index: 1; }
+  .header-meta { display: flex; gap: 32px; font-size: 12.5px; color: #c4b5fd; position: relative; z-index: 1; flex-wrap: wrap; }
+  .header-meta span { color: #fff; font-weight: 600; }
 
-/* ADDONS */
-.atbl{width:100%;border-collapse:collapse;margin-bottom:4px;font-size:11.5px;}
-.atbl th{background:#f5f3ff;color:#7c3aed;text-align:left;padding:8px 11px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;}
-.atbl td{padding:8px 11px;border-bottom:1px solid #f3f4f6;color:#374151;vertical-align:top;}
-.atbl tr:last-child td{border-bottom:none;}
-.atbl td:last-child{text-align:right;font-weight:600;color:#1a1a2e;white-space:nowrap;}
+  /* ── BODY ── */
+  .body { padding: 44px 52px; }
 
-/* PAYMENT */
-.pay{display:flex;gap:10px;margin-bottom:4px;}
-.ps{flex:1;background:#f9fafb;border-radius:7px;padding:12px;text-align:center;border:1.5px solid #e5e7eb;}
-.ps .pct{font-size:20px;font-weight:800;color:#7c3aed;}
-.ps p{font-size:10.5px;color:#6b7280;margin-top:3px;line-height:1.5;}
+  .intro {
+    font-size: 13.5px; color: #4b5563; line-height: 1.85;
+    margin-bottom: 40px;
+    border-left: 3px solid #7c3aed;
+    padding-left: 16px;
+  }
 
-/* TERMS */
-.terms{background:#f8f7ff;border-radius:7px;padding:13px 16px;margin-bottom:4px;font-size:11.5px;color:#374151;}
-.terms ul{padding-left:15px;}
-.terms ul li{margin-bottom:4px;line-height:1.65;}
+  .section-title {
+    font-size: 10.5px; letter-spacing: 2.5px; color: #7c3aed;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 16px;
+  }
 
-/* FOOTER */
-.ftr{border-top:1px solid #f3f4f6;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#fafafa,#f5f3ff);}
-.ftr-contact p{font-size:11px;color:#6b7280;line-height:1.85;}
-.ftr-contact b{color:#1a1a2e;}
-.staff{text-align:center;}
-.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#302b63);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;margin:0 auto 4px;}
-.sname{font-size:11.5px;font-weight:700;color:#1a1a2e;}
-.srole{font-size:9.5px;color:#7c3aed;letter-spacing:1px;text-transform:uppercase;}
-.sig{text-align:right;}
-.sig p{font-size:10.5px;color:#9ca3af;}
-.sigline{font-size:17px;font-family:Georgia,serif;color:#7c3aed;margin-top:5px;font-style:italic;}
-.vld{text-align:center;font-size:10.5px;color:#9ca3af;padding:8px 40px 16px;}
+  /* ── MODE CARDS ── */
+  .modes { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+
+  .mode {
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1.5px solid #e5e7eb;
+    background: #fff;
+    transform: perspective(600px) rotateX(0deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    cursor: default;
+  }
+  .mode:hover {
+    transform: perspective(600px) rotateX(-2deg) translateY(-4px);
+    box-shadow: 0 12px 32px rgba(124,58,237,0.15), 0 4px 0 #7c3aed;
+    border-color: #7c3aed;
+  }
+  .mode-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .mode-name { font-size: 14px; font-weight: 700; color: #1a1a2e; }
+  .mode-tag {
+    font-size: 11px; font-weight: 600; color: #7c3aed;
+    background: #f5f3ff; padding: 3px 12px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .mode-desc { font-size: 13px; color: #4b5563; line-height: 1.7; }
+
+  /* ── PACKAGES ── */
+  .packages { display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; }
+
+  .pkg {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: visible;
+    background: #fff;
+    transform: perspective(800px) rotateX(0deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .pkg:hover {
+    transform: perspective(800px) rotateX(-1.5deg) translateY(-5px) scale(1.005);
+    box-shadow: 0 16px 40px rgba(124,58,237,0.15), 0 4px 0 #7c3aed;
+    border-color: #7c3aed;
+  }
+  .pkg.highlight { border-color: #7c3aed; box-shadow: 0 4px 20px rgba(124,58,237,0.12), 0 3px 0 #7c3aed; }
+
+  .pkg-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 22px; background: #fafafa;
+    border-radius: 12px 12px 0 0;
+  }
+  .pkg.highlight .pkg-header { background: linear-gradient(90deg, #f5f3ff, #ede9fe); }
+  .pkg-left { display: flex; flex-direction: column; gap: 4px; }
+  .pkg-name { font-size: 14px; font-weight: 700; color: #1a1a2e; }
+  .pkg-price { font-size: 17px; font-weight: 800; color: #7c3aed; white-space: nowrap; }
+
+  /* coded badges */
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .badge {
+    font-size: 10px; font-weight: 600; padding: 2px 9px; border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .badge-a { background: #dcfce7; color: #166534; }
+  .badge-b { background: #fef9c3; color: #854d0e; }
+  .badge-c { background: #ede9fe; color: #5b21b6; }
+
+  .pkg-body { padding: 18px 22px; }
+  .pkg-desc { font-size: 13px; color: #6b7280; margin-bottom: 14px; }
+
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 18px; }
+  .feature {
+    font-size: 12.5px; color: #374151;
+    display: flex; align-items: flex-start; gap: 8px; line-height: 1.45;
+  }
+  .feature::before { content: '–'; color: #7c3aed; font-weight: 700; flex-shrink: 0; }
+
+  .pkg-footer {
+    font-size: 12px; color: #9ca3af;
+    margin-top: 14px; padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+    display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .pkg-footer span { color: #374151; font-weight: 600; }
+
+  /* modes legend inside package */
+  .mode-legend {
+    margin-top: 12px; padding: 10px 14px;
+    background: #f9fafb; border-radius: 8px;
+    font-size: 12px; color: #4b5563; line-height: 1.7;
+  }
+  .mode-legend strong { color: #1a1a2e; }
+
+  /* ── ADD-ONS ── */
+  .addons-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; font-size: 13px; }
+  .addons-table th {
+    background: #f5f3ff; color: #7c3aed; text-align: left;
+    padding: 10px 14px; font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .addons-table td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+  .addons-table tr:last-child td { border-bottom: none; }
+  .addons-table td:last-child { text-align: right; font-weight: 600; color: #1a1a2e; white-space: nowrap; }
+
+  /* ── PAYMENT ── */
+  .payment { display: flex; gap: 14px; margin-bottom: 40px; }
+  .pay-step {
+    flex: 1; background: #f9fafb; border-radius: 10px;
+    padding: 16px; text-align: center; border: 1.5px solid #e5e7eb;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .pay-step:hover {
+    transform: translateY(-4px) perspective(400px) rotateX(-3deg);
+    box-shadow: 0 10px 24px rgba(124,58,237,0.15);
+  }
+  .pay-step .pct { font-size: 24px; font-weight: 800; color: #7c3aed; }
+  .pay-step p { font-size: 12px; color: #6b7280; margin-top: 5px; line-height: 1.5; }
+
+  /* ── TERMS ── */
+  .notes {
+    background: #f8f7ff; border-radius: 10px;
+    padding: 18px 22px; margin-bottom: 40px;
+    font-size: 13px; color: #374151;
+  }
+  .notes ul { padding-left: 18px; }
+  .notes ul li { margin-bottom: 6px; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid #f3f4f6;
+    padding: 26px 52px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(90deg, #fafafa, #f5f3ff);
+  }
+  .footer-contact p { font-size: 12px; color: #6b7280; line-height: 1.9; }
+  .footer-contact strong { color: #1a1a2e; }
+  .staff-block { text-align: center; }
+  .staff-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #302b63);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800; color: #fff;
+    margin: 0 auto 6px;
+    box-shadow: 0 4px 14px rgba(124,58,237,0.4);
+  }
+  .staff-name { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+  .staff-role { font-size: 11px; color: #7c3aed; letter-spacing: 1px; text-transform: uppercase; }
+  .footer-sig { text-align: right; }
+  .footer-sig p { font-size: 12px; color: #9ca3af; }
+  .footer-sig .sig-line { font-size: 20px; font-family: Georgia, serif; color: #7c3aed; margin-top: 6px; font-style: italic; }
+
+  .validity {
+    text-align: center; font-size: 12px; color: #9ca3af;
+    padding: 14px 52px 26px;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; margin: 0; border-radius: 0; transform: none; }
+    .mode:hover, .pkg:hover, .pay-step:hover { transform: none; box-shadow: none; }
+  }
 </style>
 </head>
 <body>
-<div class="hdr">
-  <div class="hdr-top">
-    <div><div class="brand">CREED PRODUCTIONS</div><div class="brand-sub">Digital · Mobile · Web</div></div>
-    <div class="doc-right">
-      <h2>QUOTATION</h2>
-      <p>Ref: CP-WEB-2025-031</p>
-      <p>Date: 4 July 2025</p>
-      <p class="wh">Valid Until: 4 June 2026</p>
-    </div>
-  </div>
-  <hr class="hdiv"/>
-  <div class="hmeta">Prepared by: <b>Mike — Creed Productions</b> &nbsp;|&nbsp; Currency: <b>Ugandan Shillings (UGX)</b> &nbsp;|&nbsp; Valid Until: <b>4 June 2026</b></div>
-</div>
+<div class="page">
 
-<div class="bdy">
-  <div class="intro">Creed Productions builds websites tailored to what each client actually needs. Every package below is fully hand-coded — no page builders, no templates. Three build modes are available depending on how involved you want to be in running your site after launch.</div>
-
-  <div class="stitle">Build Modes</div>
-  <div class="modes">
-    <div class="mode"><div class="mhdr"><div class="mname">Mode A — Client-Editable Website</div><div class="mtag">Self-Managed</div></div><div class="mdesc">Built with clean, readable code so the client can make text and image changes without developer assistance. No monthly fees after handover. Suited for individuals and small businesses who want full ownership.</div></div>
-    <div class="mode"><div class="mhdr"><div class="mname">Mode B — Client-Editable with Full Training</div><div class="mtag">Guided Handover</div></div><div class="mdesc">Same as Mode A, with a structured session where every relevant part of the code is walked through line by line. You leave knowing exactly what does what and how to manage it independently. Carries an additional training fee.</div></div>
-    <div class="mode"><div class="mhdr"><div class="mname">Mode C — Developer-Managed Website</div><div class="mtag">Monthly Retainer</div></div><div class="mdesc">A server-based dynamic website maintained entirely by the developer on a monthly retainer. Content updates, feature additions, hosting, and backend work are all handled by Creed Productions.</div></div>
-  </div>
-
-  <div class="stitle">Website Packages — All Hand-Coded</div>
-  <div class="pkgs">
-
-    <div class="pkg">
-      <div class="phdr">
-        <div class="pleft"><div class="pname">Package 1 — Dynamic Landing Page</div><div class="badges"><span class="badge ba">Mode A</span><span class="badge bb">Mode B</span><span class="badge bc">Mode C</span></div></div>
-        <div class="pprice">UGX 350,000</div>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="brand-name">CREED PRODUCTIONS</div>
+        <div class="brand-tag">Digital · Mobile · Web</div>
       </div>
-      <div class="pbdy">
-        <div class="pdesc">A single high-converting page covering everything a visitor needs to know. Ideal for product launches, personal brands, or service promotion.</div>
-        <div class="feats">
-          <div class="feat">Responsive layout (mobile + desktop)</div><div class="feat">Animated hero section</div>
-          <div class="feat">Services or features section</div><div class="feat">Contact and enquiry form</div>
-          <div class="feat">Social media links</div><div class="feat">Basic SEO setup</div>
-          <div class="feat">Google Maps embed</div><div class="feat">WhatsApp contact button</div>
-        </div>
-        <div class="mleg"><b>Mode A</b> — Structured code, easy to update &nbsp;|&nbsp; <b>Mode B</b> — Full line-by-line training (+UGX 150,000) &nbsp;|&nbsp; <b>Mode C</b> — Developer handles all updates (+UGX 200,000/mo)</div>
-        <div class="pfoot">Delivery: <b>2 – 3 working days</b></div>
+      <div class="doc-label">
+        <h2>QUOTATION</h2>
+        <p>Ref: CP-WEB-2026-031</p>
+        <p>Date: 4 July 2025</p>
+        <p class="valid">Valid Until: 4 June 2026</p>
       </div>
     </div>
+    <hr class="header-divider">
+    <div class="header-meta">
+      Prepared by: <span>Mike — Creed Productions</span>
+      &nbsp;|&nbsp;
+      Currency: <span>Ugandan Shillings (UGX)</span>
+      &nbsp;|&nbsp;
+      Valid Until: <span>4 June 2026</span>
+    </div>
+  </div>
 
-    <div class="pkg hi">
-      <div class="phdr">
-        <div class="pleft"><div class="pname">Package 2 — Business Website (Up to 5 Pages)</div><div class="badges"><span class="badge ba">Mode A</span><span class="badge bb">Mode B</span><span class="badge bc">Mode C</span></div></div>
-        <div class="pprice">UGX 900,000</div>
-      </div>
-      <div class="pbdy">
-        <div class="pdesc">Home, About, Services, Gallery, and Contact — all hand-coded with a CMS panel for easy management. The standard choice for established businesses.</div>
-        <div class="feats">
-          <div class="feat">Up to 5 pages</div><div class="feat">Dynamic content sections</div>
-          <div class="feat">Image and video gallery</div><div class="feat">Blog or news section</div>
-          <div class="feat">Contact form with email alerts</div><div class="feat">Google Analytics</div>
-          <div class="feat">SEO optimisation</div><div class="feat">Admin content panel (CMS)</div>
-          <div class="feat">Social media integration</div><div class="feat">1 month post-launch support</div>
-        </div>
-        <div class="mleg"><b>Mode A</b> — CMS allows updates without touching code &nbsp;|&nbsp; <b>Mode B</b> — Full code and CMS walkthrough (+UGX 150,000) &nbsp;|&nbsp; <b>Mode C</b> — Monthly developer management (+UGX 200,000/mo)</div>
-        <div class="pfoot">Delivery: <b>4 – 5 working days</b></div>
-      </div>
+  <!-- BODY -->
+  <div class="body">
+
+    <div class="intro">
+      Creed Productions builds websites tailored to what each client actually needs. Every package below is fully hand-coded — no page builders, no templates. Three build modes are available depending on how involved you want to be in running your site after launch.
     </div>
 
-    <div class="pkg">
-      <div class="phdr">
-        <div class="pleft"><div class="pname">Package 3 — Corporate Website (Up to 10 Pages)</div><div class="badges"><span class="badge ba">Mode A</span><span class="badge bb">Mode B</span><span class="badge bc">Mode C</span></div></div>
-        <div class="pprice">UGX 1,700,000</div>
-      </div>
-      <div class="pbdy">
-        <div class="pdesc">A full company website with staff profiles, project showcase, events, and a complete admin dashboard. Built for organisations that need a serious digital presence.</div>
-        <div class="feats">
-          <div class="feat">Up to 10 custom pages</div><div class="feat">Staff and team profiles</div>
-          <div class="feat">Full CMS (admin dashboard)</div><div class="feat">Portfolio or project showcase</div>
-          <div class="feat">Events or announcements section</div><div class="feat">Newsletter subscription</div>
-          <div class="feat">Multi-level navigation</div><div class="feat">Advanced SEO and sitemap</div>
-          <div class="feat">Live chat integration</div><div class="feat">3 months post-launch support</div>
+    <!-- BUILD MODES -->
+    <div class="section-title">Build Modes</div>
+    <div class="modes">
+
+      <div class="mode">
+        <div class="mode-header">
+          <div class="mode-name">Mode A — Client-Editable Website</div>
+          <div class="mode-tag">Self-Managed</div>
         </div>
-        <div class="mleg"><b>Mode A</b> — Full CMS; all pages editable without code &nbsp;|&nbsp; <b>Mode B</b> — Deep training on all modules (+UGX 150,000) &nbsp;|&nbsp; <b>Mode C</b> — Fully developer-managed retainer (+UGX 200,000/mo)</div>
-        <div class="pfoot">Delivery: <b>5 – 7 working days</b></div>
+        <div class="mode-desc">
+          Built with clean, readable code structured so the client can make text and image changes without developer assistance. No monthly fees after handover. Suited for individuals and small businesses who want full ownership of their site.
+        </div>
       </div>
+
+      <div class="mode">
+        <div class="mode-header">
+          <div class="mode-name">Mode B — Client-Editable with Full Training</div>
+          <div class="mode-tag">Guided Handover</div>
+        </div>
+        <div class="mode-desc">
+          Same as Mode A, with an added structured session where every relevant part of the code is walked through line by line. You leave knowing exactly what does what and how to manage it yourself. Carries an additional training fee.
+        </div>
+      </div>
+
+      <div class="mode">
+        <div class="mode-header">
+          <div class="mode-name">Mode C — Developer-Managed Website</div>
+          <div class="mode-tag">Monthly Retainer</div>
+        </div>
+        <div class="mode-desc">
+          A server-based dynamic website maintained entirely by the developer on a monthly retainer. Content updates, feature additions, hosting, and backend work are all handled by Creed Productions. Suited for businesses that expect regular changes or need ongoing development.
+        </div>
+      </div>
+
     </div>
 
-    <div class="pkg">
-      <div class="phdr">
-        <div class="pleft"><div class="pname">Package 4 — E-Commerce / Full-Stack Web Application</div><div class="badges"><span class="badge bc">Mode C</span></div></div>
-        <div class="pprice">UGX 2,500,000</div>
-      </div>
-      <div class="pbdy">
-        <div class="pdesc">A server-based dynamic web application with full backend development. For businesses needing product management, user accounts, or payment processing. Scope confirmed before commencement.</div>
-        <div class="feats">
-          <div class="feat">Unlimited pages (per agreed scope)</div><div class="feat">Product catalogue and inventory</div>
-          <div class="feat">Mobile Money and card payments</div><div class="feat">User registration and login</div>
-          <div class="feat">Orders and reporting dashboard</div><div class="feat">Full admin panel</div>
-          <div class="feat">REST API and backend development</div><div class="feat">Database design and setup</div>
-          <div class="feat">SSL and security hardening</div><div class="feat">6 months post-launch support</div>
-        </div>
-        <div class="mleg"><b>Mode C only</b> — Runs on a live server with active backend. Ongoing developer management required. Monthly retainer applies after handover.</div>
-        <div class="pfoot">Delivery: <b>5 – 7 working days</b></div>
-      </div>
-    </div>
+    <!-- PACKAGES -->
+    <div class="section-title">Website Packages — All Hand-Coded</div>
+    <div class="packages">
 
-  </div>
-
-  <div class="stitle">Add-ons</div>
-  <table class="atbl">
-    <thead><tr><th>Item</th><th>Description</th><th>Price (UGX)</th></tr></thead>
-    <tbody>
-      <tr><td>Mode B Training Fee</td><td>Line-by-line code walkthrough and handover session</td><td>150,000</td></tr>
-      <tr><td>Mode C Monthly Retainer</td><td>Developer-managed updates, hosting, and maintenance</td><td>200,000 / month</td></tr>
-      <tr><td>Domain Registration</td><td>.com or .co.ug (1 year)</td><td>50,000 – 80,000</td></tr>
-      <tr><td>Web Hosting (1 Year)</td><td>Managed hosting with SSL certificate</td><td>120,000 – 250,000</td></tr>
-      <tr><td>Logo Design</td><td>Professional logo with brand guide</td><td>150,000</td></tr>
-      <tr><td>Extra Pages</td><td>Pages beyond the package limit</td><td>80,000 / page</td></tr>
-      <tr><td>Multilingual Support</td><td>Website in two or more languages</td><td>200,000</td></tr>
-    </tbody>
-  </table>
-
-  <div class="stitle">Payment Terms</div>
-  <div class="pay">
-    <div class="ps"><div class="pct">50%</div><p>Deposit<br/>Due before work begins</p></div>
-    <div class="ps"><div class="pct">25%</div><p>Milestone<br/>Upon design approval</p></div>
-    <div class="ps"><div class="pct">25%</div><p>Final Balance<br/>Before site goes live</p></div>
-  </div>
-
-  <div class="stitle">Terms and Conditions</div>
-  <div class="terms">
-    <ul>
-      <li>All prices are in Ugandan Shillings (UGX) and exclude any applicable taxes.</li>
-      <li>All websites are hand-coded by Creed Productions. No website builders or third-party templates are used.</li>
-      <li>The client is responsible for supplying all content — text, images, logos, and brand colours — within 5 working days of project commencement. Delays affect the timeline.</li>
-      <li>Each package includes two revision rounds (Packages 1–2) or three rounds (Packages 3–4). Further revisions are billed at UGX 50,000 per round.</li>
-      <li>Domain and hosting costs are billed separately and renewed annually by the client unless a Mode C retainer is active.</li>
-      <li>For Package 4 and all Mode C engagements, a scope document is agreed and signed before work begins. Additions after sign-off are quoted separately.</li>
-      <li>Creed Productions reserves the right to list completed work in its portfolio unless the client requests otherwise in writing before project start.</li>
-      <li>This quotation is valid until 4 June 2026.</li>
-    </ul>
-  </div>
-</div>
-
-<div class="ftr">
-  <div class="ftr-contact"><p><b>Creed Productions</b><br/>Kampala, Uganda<br/>creedproductions.ug<br/>info@creedproductions.ug</p></div>
-  <div class="staff">
-    <div class="avatar">M</div>
-    <div class="sname">Mike</div>
-    <div class="srole">Developer — Creed Productions</div>
-  </div>
-  <div class="sig">
-    <p>Authorised by</p>
-    <div class="sigline">Mike — Creed Productions</div>
-    <p style="margin-top:3px;font-size:9.5px;">Director, Creed Productions</p>
-  </div>
-</div>
-<div class="vld">This quotation is valid until 4 June 2026 — Creed Productions</div>
-</body>
-</html>`;
-
-export default function App() {
-  const [generating, setGenerating] = useState(false);
-
-  const generatePDF = () => {
-    setGenerating(true);
-    const blob = new Blob([docHTML], { type: "text/html;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const win = window.open(url, "_blank");
-    if (win) {
-      win.onload = () => {
-        setTimeout(() => {
-          win.print();
-          setGenerating(false);
-        }, 800);
-      };
-    } else {
-      setGenerating(false);
-    }
-  };
-
-  const downloadHTML = () => {
-    const blob = new Blob([docHTML], { type: "text/html;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "Creed_Productions_Quotation_2025.html";
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,#0f0c29,#1a0a2e,#0d0d1a)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 32, fontFamily: "Inter, Segoe UI, sans-serif" }}>
-
-      {/* Card */}
-      <div style={{
-        background: "rgba(255,255,255,0.04)",
-        border: "1.5px solid rgba(124,58,237,0.3)",
-        borderRadius: 20,
-        padding: "48px 52px",
-        maxWidth: 520,
-        width: "100%",
-        textAlign: "center",
-        boxShadow: "0 0 60px rgba(124,58,237,0.2), 0 20px 60px rgba(0,0,0,0.5)",
-        backdropFilter: "blur(10px)",
-      }}>
-
-        {/* Logo circle */}
-        <div style={{
-          width: 72, height: 72, borderRadius: "50%",
-          background: "linear-gradient(135deg,#7c3aed,#302b63)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 28, fontWeight: 800, color: "#fff",
-          margin: "0 auto 20px",
-          boxShadow: "0 0 30px rgba(124,58,237,0.5)",
-        }}>M</div>
-
-        <div style={{ fontSize: 11, letterSpacing: 3, color: "#a78bfa", textTransform: "uppercase", marginBottom: 8 }}>Creed Productions</div>
-        <div style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginBottom: 6 }}>Website Quotation</div>
-        <div style={{ fontSize: 12.5, color: "#6b7280", marginBottom: 32, lineHeight: 1.6 }}>
-          Ref: CP-WEB-2025-031 &nbsp;·&nbsp; 4 July 2025<br/>
-          Valid until <span style={{ color: "#a78bfa", fontWeight: 600 }}>4 June 2026</span>
-        </div>
-
-        {/* Summary pills */}
-        <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 36 }}>
-          {[
-            ["Landing Page", "350K"],
-            ["Business (5pg)", "900K"],
-            ["Corporate (10pg)", "1.7M"],
-            ["E-Commerce", "2.5M"],
-          ].map(([label, price]) => (
-            <div key={label} style={{
-              background: "rgba(124,58,237,0.15)",
-              border: "1px solid rgba(124,58,237,0.3)",
-              borderRadius: 8,
-              padding: "8px 14px",
-              fontSize: 11.5,
-              color: "#e0d7ff",
-            }}>
-              <div style={{ fontWeight: 700, color: "#fff" }}>{label}</div>
-              <div style={{ color: "#a78bfa", fontWeight: 600 }}>UGX {price}</div>
+      <!-- P1 -->
+      <div class="pkg">
+        <div class="pkg-header">
+          <div class="pkg-left">
+            <div class="pkg-name">Package 1 — Dynamic Landing Page</div>
+            <div class="badges">
+              <span class="badge badge-a">Mode A</span>
+              <span class="badge badge-b">Mode B</span>
+              <span class="badge badge-c">Mode C</span>
             </div>
-          ))}
+          </div>
+          <div class="pkg-price">UGX 350,000</div>
         </div>
+        <div class="pkg-body">
+          <div class="pkg-desc">A single high-converting page covering everything a visitor needs to know. Ideal for product launches, personal brands, or service promotion. Fully coded — no builders used.</div>
+          <div class="features">
+            <div class="feature">Responsive layout (mobile + desktop)</div>
+            <div class="feature">Animated hero section</div>
+            <div class="feature">Services or features section</div>
+            <div class="feature">Contact and enquiry form</div>
+            <div class="feature">Social media links</div>
+            <div class="feature">Basic SEO setup</div>
+            <div class="feature">Google Maps embed</div>
+            <div class="feature">WhatsApp contact button</div>
+          </div>
+          <div class="mode-legend">
+            <strong>Mode A</strong> — Structured code, easy to update &nbsp;|&nbsp;
+            <strong>Mode B</strong> — Includes full line-by-line training (+UGX 150,000) &nbsp;|&nbsp;
+            <strong>Mode C</strong> — Developer handles all updates monthly (+UGX 200,000/mo)
+          </div>
+          <div class="pkg-footer">Delivery: <span>2 – 3 working days</span></div>
+        </div>
+      </div>
 
-        {/* Buttons */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <button onClick={generateP
+      <!-- P2 -->
+      <div class="pkg highlight">
+        <div class="pkg-header">
+          <div class="pkg-left">
+            <div class="pkg-name">Package 2 — Business Website (Up to 5 Pages)</div>
+            <div class="badges">
+              <span class="badge badge-a">Mode A</span>
+              <span class="badge badge-b">Mode B</span>
+              <span class="badge badge-c">Mode C</span>
+            </div>
+          </div>
+          <div class="pkg-price">UGX 900,000</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-desc">Home, About, Services, Gallery, and Contact — all hand-coded with a CMS panel for easy management. The standard choice for established businesses.</div>
+          <div class="features">
+            <div class="feature">Up to 5 pages</div>
+            <div class="feature">Dynamic content sections</div>
+            <div class="feature">Image and video gallery</div>
+            <div class="feature">Blog or news section</div>
+            <div class="feature">Contact form with email alerts</div>
+            <div class="feature">Google Analytics</div>
+            <div class="feature">SEO optimisation</div>
+            <div class="feature">Admin content panel (CMS)</div>
+            <div class="feature">Social media integration</div>
+            <div class="feature">1 month post-launch support</div>
+          </div>
+          <div class="mode-legend">
+            <strong>Mode A</strong> — CMS allows updates without touching code &nbsp;|&nbsp;
+            <strong>Mode B</strong> — Full code and CMS walkthrough included (+UGX 150,000) &nbsp;|&nbsp;
+            <strong>Mode C</strong> — Monthly developer management (+UGX 200,000/mo)
+          </div>
+          <div class="pkg-footer">Delivery: <span>4 – 5 working days</span></div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="pkg">
+        <div class="pkg-header">
+          <div class="pkg-left">
+            <div class="pkg-name">Package 3 — Corporate Website (Up to 10 Pages)</div>
+            <div class="badges">
+              <span class="badge badge-a">Mode A</span>
+              <span class="badge badge-b">Mode B</span>
+              <span class="badge badge-c">Mode C</span>
+            </div>
+          </div>
+          <div class="pkg-price">UGX 1,700,000</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-desc">A full company website with staff profiles, project showcase, events, and a complete admin dashboard. Built for organisations that need a serious digital presence.</div>
+          <div class="features">
+            <div class="feature">Up to 10 custom pages</div>
+            <div class="feature">Staff and team profiles</div>
+            <div class="feature">Full CMS (admin dashboard)</div>
+            <div class="feature">Portfolio or project showcase</div>
+            <div class="feature">Events or announcements section</div>
+            <div class="feature">Newsletter subscription</div>
+            <div class="feature">Multi-level navigation</div>
+            <div class="feature">Advanced SEO and sitemap</div>
+            <div class="feature">Live chat integration</div>
+            <div class="feature">3 months post-launch support</div>
+          </div>
+          <div class="mode-legend">
+            <strong>Mode A</strong> — Full CMS; all pages editable without code &nbsp;|&nbsp;
+            <strong>Mode B</strong> — Deep training on all modules and backend (+UGX 150,000) &nbsp;|&nbsp;
+            <strong>Mode C</strong> — Fully developer-managed, ongoing retainer (+UGX 200,000/mo)
+          </div>
+          <div class="pkg-footer">Delivery: <span>5 – 7 working days</span></div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="pkg">
+        <div class="pkg-header">
+          <div class="pkg-left">
+            <div class="pkg-name">Package 4 — E-Commerce / Full-Stack Web Application</div>
+            <div class="badges">
+              <span class="badge badge-c">Mode C</span>
+            </div>
+          </div>
+          <div class="pkg-price">UGX 2,500,000</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-desc">A server-based dynamic web application with full backend development. Built for businesses that need product management, user accounts, or payment processing. Scope confirmed before commencement. Developer-managed by nature — Mode C applies.</div>
+          <div class="features">
+            <div class="feature">Unlimited pages (per agreed scope)</div>
+            <div class="feature">Product catalogue and inventory</div>
+            <div class="feature">Mobile Money and card payments</div>
+            <div class="feature">User registration and login</div>
+            <div class="feature">Orders and reporting dashboard</div>
+            <div class="feature">Full admin panel</div>
+            <div class="feature">REST API and backend development</div>
+            <div class="feature">Database design and setup</div>
+            <div class="feature">SSL and security hardening</div>
+            <div class="feature">6 months post-launch support</div>
+          </div>
+          <div class="mode-legend">
+            <strong>Mode C only</strong> — This package runs on a live server with a database and active backend. Ongoing developer management is required. Monthly retainer applies after handover.
+          </div>
+          <div class="pkg-footer">Delivery: <span>5 – 7 working days</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="section-title">Add-ons</div>
+    <table class="addons-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Description</th>
+          <th>Price (UGX)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mode B Training Fee</td>
+          <td>Line-by-line code walkthrough and handover session</td>
+          <td>150,000</td>
+        </tr>
+        <tr>
+          <td>Mode C Monthly Retainer</td>
+          <td>Developer-managed updates, hosting, and maintenance</td>
+          <td>200,000 / month</td>
+        </tr>
+        <tr>
+          <td>Domain Registration</td>
+          <td>.com or .co.ug (1 year)</td>
+          <td>50,000 – 80,000</td>
+          
